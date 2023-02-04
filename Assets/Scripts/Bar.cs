@@ -39,8 +39,6 @@ namespace ggj.rootbeer
 
             RenderDrink();
             _drinkFlavorTooltip.SetFlavorProfile(_drinkFlavorProfile);
-
-            _gameManager.NewDrink();
         }
 
         public void ClearDrink() {
@@ -53,6 +51,11 @@ namespace ggj.rootbeer
         public void RenderDrink() {
             // TODO
             Debug.Log("Not implemented");
+        }
+
+        public void ServerDrink() {
+
+            _gameManager.NewDrink();
         }
 
         #region Private helpers

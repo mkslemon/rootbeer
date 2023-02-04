@@ -9,9 +9,15 @@ public class Ingredient : MonoBehaviour
     private FlavorTooltip _flavorTooltip;
     private bool _mouseInside;
 
+    private Vector3 _originalPosition;
+
     #region Unity
     private void Awake() {
         _flavorTooltip = GameObject.Find("IngredientFlavorTooltip").GetComponent<FlavorTooltip>();
+        _originalPosition = transform.position;
+    }
+
+    private void Start() {
         _flavorTooltip.gameObject.SetActive(false);
     }
 
@@ -19,15 +25,28 @@ public class Ingredient : MonoBehaviour
 
         if (_mouseInside) {
             if (Input.GetMouseButton(0)) {
-                Debug.Log("Mouse down");
-
+                Dragging();
             }
 
             if (Input.GetMouseButtonUp(0)) {
-                Debug.Log("Mouse up");
+                Released();
             }
         }
     }
+    #endregion
+
+    #region Private helpers
+
+    private void Dragging() {
+        Debug.Log("Dragging");
+    }
+
+    private void Released() {
+        Debug.Log("Released");
+
+        transform.DOMove(_originalPosition, 1f);
+    }
+
     #endregion
 
     #region Mouse controls
@@ -36,15 +55,15 @@ public class Ingredient : MonoBehaviour
 
         // set the _flavorTooltip position to the screen position
         Vector3 screenPosition = Input.mousePosition;
-
         screenPosition.z = _flavorTooltip.gameObject.transform.position.z;
-        Debug.Log(screenPosition);
-
+        screenPosition.x += 0.5f;
+        screenPosition.y += 0.5f;
         _flavorTooltip.gameObject.transform.position = screenPosition;
+
+        // Fade in the object
         _flavorTooltip.gameObject.SetActive(true);
         _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
         _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
-
     }
 
     private void OnMouseExit() {
