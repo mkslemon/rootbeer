@@ -9,6 +9,15 @@ namespace ggj.rootbeer
         public List<Syrup> Syrups;
         public List<Topping> Toppings;
 
+        [SerializeField] GameObject _strawGO;
+
+        #region Unity
+
+        private void Awake() {
+        }
+
+        #endregion
+
         public Drink()
         {
             Syrups = new List<Syrup>();
@@ -51,6 +60,10 @@ namespace ggj.rootbeer
                     break;
             }
             return returnColor;
+        }
+
+        public void SetStrawVisibility(bool state) {
+            _strawGO.SetActive(state);
         }
     }
 }
