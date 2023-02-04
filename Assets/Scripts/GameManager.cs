@@ -124,5 +124,13 @@ namespace ggj.rootbeer
             
 
         }
+
+        #region Drinks
+
+        public void NewDrink() {
+            // TODO
+        }
+
+        #endregion
     }
 }
