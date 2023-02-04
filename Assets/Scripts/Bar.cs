@@ -15,12 +15,6 @@ namespace ggj.rootbeer
         [SerializeField] FlavorTooltip _drinkFlavorTooltip;
         [SerializeField] GameObject _serverButtonGO;
 
-        private FlavorProfile _drinkFlavorProfile;
-
-        // Drink parts
-        private Juice _juice;
-        private Syrup _syrup;
-        private Topping _topping;
 
         private List<FlavorProfile> _currentFlavorProfiles;
 
@@ -35,32 +29,32 @@ namespace ggj.rootbeer
 
         #region     Public
         public void SetJuice(Juice juice) {
-            _juice = juice;
+            Drink.Instance.Juice = juice;
             Mix();
         }
 
         public void ClearJuice() {
-            _juice = null;
+            Drink.Instance.Juice = null;
             Mix();
         }
 
         public void SetSyrup(Syrup syrup) {
-            _syrup = syrup;
+            Drink.Instance.Syrup = syrup;
             Mix();
         }
 
         public void ClearSyrup() {
-            _syrup = null;
+            Drink.Instance.Syrup = null;
             Mix();
         }
 
         public void SetTopping(Topping topping) {
-            _topping = topping;
+            Drink.Instance.Topping = topping;
             Mix();
         }
 
         public void ClearTopping() {
-            _topping = null;
+            Drink.Instance.Topping = null;
             Mix();
         }
 
@@ -69,9 +63,9 @@ namespace ggj.rootbeer
             GetFlavorProfiles();
 
             if (_currentFlavorProfiles.Count == 1)
-                _drinkFlavorProfile = _currentFlavorProfiles[0];
+                Drink.Instance.FlavorProfile = _currentFlavorProfiles[0];
             else {
-                _drinkFlavorProfile = FlavorProfile.GetAverages(_currentFlavorProfiles);
+                Drink.Instance.FlavorProfile = FlavorProfile.GetAverages(_currentFlavorProfiles);
             }
 
             if (_currentFlavorProfiles.Count >= 3)
@@ -79,25 +73,19 @@ namespace ggj.rootbeer
             else
                 _serverButtonGO.SetActive(false);
 
-            RenderDrink();
-            _drinkFlavorTooltip.SetFlavorProfile(_drinkFlavorProfile);
+            Drink.Instance.UpdateRender();
+            _drinkFlavorTooltip.SetFlavorProfile(Drink.Instance.FlavorProfile);
         }
 
         public void ClearDrink() {
-            _juice = null;
-            _syrup = null;
-            _topping = null;
-            _drinkFlavorProfile = null;
+            Drink.Instance.Juice = null;
+            Drink.Instance.Syrup = null;
+            Drink.Instance.Topping = null;
+            Drink.Instance.FlavorProfile = null;
             _serverButtonGO.SetActive(false);
         }
 
-        public void RenderDrink() {
-            // TODO
-            Debug.Log("Not implemented");
-        }
-
         public void ServeDrink() {
-
             _gameManager.NewDrink();
         }
 
@@ -106,12 +94,12 @@ namespace ggj.rootbeer
         #region Private helpers
         private void GetFlavorProfiles() {
             _currentFlavorProfiles = new List<FlavorProfile>();
-            if (_juice != null)
-                _currentFlavorProfiles.Add(_juice.FlavorProfile);
-            if (_syrup != null)
-                _currentFlavorProfiles.Add(_syrup.FlavorProfile);
-            if (_topping != null)
-                _currentFlavorProfiles.Add(_topping.FlavorProfile);
+            if (Drink.Instance.Juice != null)
+                _currentFlavorProfiles.Add(Drink.Instance.Juice.FlavorProfile);
+            if (Drink.Instance.Syrup != null)
+                _currentFlavorProfiles.Add(Drink.Instance.Syrup.FlavorProfile);
+            if (Drink.Instance.Topping != null)
+                _currentFlavorProfiles.Add(Drink.Instance.Topping.FlavorProfile);
         }
 
         #endregion

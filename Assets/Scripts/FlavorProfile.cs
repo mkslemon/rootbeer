@@ -56,6 +56,7 @@ namespace ggj.rootbeer
         }
         public float GetDistance(FlavorProfile other)
         {
+            // TODO Dan would like to suggest using Cosine similarity not Euclidian distance!
             // returns distance
             return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
         }

@@ -19,7 +19,6 @@ namespace ggj.rootbeer
         [Header("Game Object References")]
         [HideInInspector] public Patron[] activePatrons =  new Patron[2];
         public Patron[] Patrons;
-        public Drink drink;
         public Transform[] patronOrigins;
         private FlavorProfile targetFlavorProfile;
         public float PatronStartingDistanceToTarget;
@@ -53,7 +52,7 @@ namespace ggj.rootbeer
 
         public void tryToServe()
         {
-            float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, drink.GetFlavor()) / PatronStartingDistanceToTarget).ToArray();
+            float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, Drink.Instance.FlavorProfile) / PatronStartingDistanceToTarget).ToArray();
 
             //do we need to reject a served drink because player forgot something in it?
 
@@ -63,11 +62,12 @@ namespace ggj.rootbeer
             for(int p= 0; p<activePatrons.Length; p++)
             {
                 //compare to preferences to generate a score (0 to 1.0)
-                scores[p] = activePatrons[p].Score(drink);
+                scores[p] = activePatrons[p].Score(Drink.Instance);
+                Debug.Log((scores[0], scores[1]));
 
                 //move the patron closer to the drink if liked or closer to their origin point if disliked
                 //pass a float 0 to 1.0 along with 
-                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, drink.transform.position);
+                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, Drink.Instance.transform.position);
                 //
                 if (scores[p] >= happyZone)
                 {
@@ -207,7 +207,6 @@ namespace ggj.rootbeer
         #region Drinks
 
         public void NewDrink() {
-            // TODO
             tryToServe();
         }
 
