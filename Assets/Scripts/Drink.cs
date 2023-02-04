@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ggj.rootbeer
 {
-    public class Drink
+    public class Drink : MonoBehaviour
     {
         public List<Syrup> Syrups;
         public List<Topping> Toppings;
