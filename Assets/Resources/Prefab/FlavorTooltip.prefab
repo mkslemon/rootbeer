@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.69411767}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.85882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -121,6 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c7ddec350be405d9db040c795e60e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flavorSliders:
+  - {fileID: 6529024400761131813}
+  - {fileID: 1165836831789635896}
+  - {fileID: 7815790990093982304}
+  - {fileID: 663875984862461908}
 --- !u!225 &7814119506025074429
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -150,9 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336806489959661448, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_text
-      value: 'Sour
-
-'
+      value: Floral
       objectReference: {fileID: 0}
     - target: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_Pivot.x
@@ -240,6 +243,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+--- !u!114 &1165836831789635896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1902673517406896485, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+  m_PrefabInstance: {fileID: 741481024893458525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5527180356295266500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
@@ -262,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336806489959661448, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_text
-      value: Bitter
+      value: Exotic
       objectReference: {fileID: 0}
     - target: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_Pivot.x
@@ -350,6 +364,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+--- !u!114 &663875984862461908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1902673517406896485, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+  m_PrefabInstance: {fileID: 1391938613859024561}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6174172189315561000 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
@@ -369,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 1854238736074970787, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_Name
       value: FlavorUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336806489959661448, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+      propertyPath: m_text
+      value: Citrus
       objectReference: {fileID: 0}
     - target: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_Pivot.x
@@ -461,6 +490,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
   m_PrefabInstance: {fileID: 4682730283947872832}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6529024400761131813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1902673517406896485, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+  m_PrefabInstance: {fileID: 4682730283947872832}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8507549308257884933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,7 +518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3336806489959661448, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_text
-      value: Salty
+      value: Sweet
       objectReference: {fileID: 0}
     - target: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
       propertyPath: m_Pivot.x
@@ -571,3 +611,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5115588004375201945, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
   m_PrefabInstance: {fileID: 8507549308257884933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7815790990093982304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1902673517406896485, guid: 32c5b68e03a5c45088e064a463c339ef, type: 3}
+  m_PrefabInstance: {fileID: 8507549308257884933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -20,6 +20,8 @@ namespace ggj.rootbeer {
         private Vector3 _positionOffset;
         private Vector3 _mousePositionWorld;
 
+        private FlavorProfile _flavorProfile;
+
         #region Unity
         private void Awake() {
             _flavorTooltip = GameObject.Find("IngredientFlavorTooltip").GetComponent<FlavorTooltip>();
@@ -28,6 +30,13 @@ namespace ggj.rootbeer {
 
         private void Start() {
             _flavorTooltip.gameObject.SetActive(false);
+
+            if (_juice != null)
+                _flavorProfile = _juice.FlavorProfile;
+            else if (_syrup != null)
+                _flavorProfile = _syrup.FlavorProfile;
+            else if (_topping != null)
+                _flavorProfile = _topping.FlavorProfile;
         }
 
         private void Update() {
@@ -83,6 +92,8 @@ namespace ggj.rootbeer {
         private void OnMouseEnter() {
             ActiveInstance = this;
             _mouseInside = true;
+
+            _flavorTooltip.SetFlavorProfile(_flavorProfile);
 
             // set the _flavorTooltip position to the screen position
             Vector3 screenPosition = Input.mousePosition;

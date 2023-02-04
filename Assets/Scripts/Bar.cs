@@ -29,8 +29,6 @@ namespace ggj.rootbeer
                 Instance = this;
             else
                 throw new System.Exception("Only one bar can be in the scene");
-
-            _drinkFlavorTooltip.gameObject.SetActive(false);
         }
         #endregion
 
