@@ -112,7 +112,8 @@ namespace ggj.rootbeer
                 activePatrons[i].transform.SetParent(charactersGrouping);
             }
 
-            
+            UpdateTargetFlavorProfile();
+            GetStartingDistance(targetFlavorProfile);
 
         }
     }
