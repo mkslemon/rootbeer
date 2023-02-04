@@ -53,5 +53,10 @@ namespace ggj.rootbeer
             float[] fpAverage = this.GetAsArray().Zip(other.GetAsArray(), (t, o) => (t + o) / 2f).ToArray();
             return new FlavorProfile(fpAverage);
         }
+        public float GetDistance(FlavorProfile other)
+        {
+            // returns distance
+            return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
+        }
     }
 }
