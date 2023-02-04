@@ -15,7 +15,7 @@ namespace ggj.rootbeer
         public float requiredScoreDistanceForOkayEnding = 0.4f;
 
         [Header("Game Object References")]
-        [HideInInspector] public Patron[] activePatrons;
+        [HideInInspector] public Patron[] activePatrons =  new Patron[2];
         public Patron[] Patrons;
         public Drink drink;
         public Transform[] patronOrigins;
@@ -26,16 +26,22 @@ namespace ggj.rootbeer
 
         int currentLevel=0;
 
+
         private void Awake()
         {
             _GAMEMANAGER = this;
+            activePatrons = new Patron[2];
         }
 
 
         public void tryToServe()
         {
-
             float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, drink.GetFlavor()) / PatronStartingDistanceToTarget).ToArray();
+
+            //do we need to reject a served drink because player forgot something in it?
+
+            //process the submission
+            triesLeft--;
             //for each patron, compare the served drinks then see how they react
             for(int p= 0; p<activePatrons.Length; p++)
             {
@@ -114,6 +120,8 @@ namespace ggj.rootbeer
 
             UpdateTargetFlavorProfile();
             GetStartingDistance(targetFlavorProfile);
+            triesLeft = numberTries;
+            
 
         }
     }
