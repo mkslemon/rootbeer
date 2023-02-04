@@ -294,15 +294,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 414736630605225019, guid: 6c93e6ee8115940f3b3b4531f8418851, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8044739
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 414736630605225019, guid: 6c93e6ee8115940f3b3b4531f8418851, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3744316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 414736630605225019, guid: 6c93e6ee8115940f3b3b4531f8418851, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.149765
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 414736630605225019, guid: 6c93e6ee8115940f3b3b4531f8418851, type: 3}
       propertyPath: m_LocalRotation.w
@@ -518,15 +518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1331624918025505327, guid: a22c19921d309496cb5dc53b0585a5d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8044739
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1331624918025505327, guid: a22c19921d309496cb5dc53b0585a5d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3744316
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1331624918025505327, guid: a22c19921d309496cb5dc53b0585a5d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.149765
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1331624918025505327, guid: a22c19921d309496cb5dc53b0585a5d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -707,6 +707,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5625447129548909317, guid: 77a5948a32e0b4bfdb95c6de6bb2c353, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625447129548909317, guid: 77a5948a32e0b4bfdb95c6de6bb2c353, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5625447129548909319, guid: 77a5948a32e0b4bfdb95c6de6bb2c353, type: 3}
       propertyPath: m_Name
       value: Main Camera
