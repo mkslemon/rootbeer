@@ -91,7 +91,18 @@ namespace ggj.rootbeer
 
         public Sequence doublePopEmoji(Emojimotion emote, Emojimotion emote2)
         {
-            return emojiBubble.doublePopEmoji(emote, emote2);
+            return emojiBubble.popEmojiThenReturnToSecondEmoji(emote, emote2);
         }
+
+        public Sequence popAndHideEmoji(Emojimotion emotion)
+        {
+            Sequence sq = DOTween.Sequence();
+            sq.Append(emojiBubble.popEmoji(emotion));
+            sq.AppendInterval(3f);
+            sq.Append(emojiBubble.fadeEmoji());
+            return sq;
+        }
+
+
     }
 }

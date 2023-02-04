@@ -73,19 +73,19 @@ namespace ggj.rootbeer
                 {
                     //characters are close enough to win
                     //show emotion emoji
-                    activePatrons[p].popEmoji(activePatrons[p].closeEmoji);
+                    activePatrons[p].doublePopEmoji(activePatrons[p].hint, activePatrons[p].closeEmoji);
                 }
                 else if (scores[p] >=  mediumZone)
                 {
                     //we made it to okay territory
                     //show emotion emoji and show hint emoji
-                    activePatrons[p].doublePopEmoji(activePatrons[p].mediumEmoji, activePatrons[p].hint);
+                    activePatrons[p].doublePopEmoji(activePatrons[p].hint, activePatrons[p].mediumEmoji);
                 }
                 else
                 {
                     //we're far away
                     //show emotion emoji and show hint emoji
-                    activePatrons[p].doublePopEmoji(activePatrons[p].mediumEmoji, activePatrons[p].hint);
+                    activePatrons[p].doublePopEmoji(activePatrons[p].hint, activePatrons[p].mediumEmoji);
                 }
 
 

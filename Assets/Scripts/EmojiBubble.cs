@@ -46,17 +46,26 @@ public class EmojiBubble : MonoBehaviour
         sq.Append(canvasGroup.DOFade(1, .4f));
         sq.Insert(0.2f, emoji.DOFade(1, .4f));
         sq.AppendInterval(1f);
-        sq.Append(canvasGroup.DOFade(0, .4f));
-        sq.Insert(sq.Duration() - 0.2f, emoji.DOFade(0, .4f));
+        
 
         return sq;
     }
 
-    public Sequence doublePopEmoji(Emojimotion emote, Emojimotion emote2)
+    public Sequence fadeEmoji()
     {
         Sequence sq = DOTween.Sequence();
+        sq.Append(canvasGroup.DOFade(0, .4f));
+        sq.Insert(sq.Duration() - 0.2f, emoji.DOFade(0, .4f));
+        return sq;
+    }
+
+    public Sequence popEmojiThenReturnToSecondEmoji(Emojimotion emote, Emojimotion emote2)
+    {
+        Sequence sq = DOTween.Sequence();
+        sq.Append(fadeEmoji());
         sq.Append(popEmoji(emote));
-        sq.AppendInterval(.2f);
+        sq.AppendInterval(3f);
+        sq.Append(fadeEmoji());
         sq.Append(popEmoji(emote2));
         return sq;
     }
