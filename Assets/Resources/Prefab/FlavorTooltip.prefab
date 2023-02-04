@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6088115614435459718}
   - component: {fileID: 719948067910912021}
   - component: {fileID: 1660910779499060908}
+  - component: {fileID: 7814119506025074429}
   m_Layer: 5
   m_Name: FlavorTooltip
   m_TagString: Untagged
@@ -120,6 +121,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c7ddec350be405d9db040c795e60e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &7814119506025074429
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398280316143349457}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &741481024893458525
 PrefabInstance:
   m_ObjectHideFlags: 0
