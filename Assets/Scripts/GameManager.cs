@@ -11,8 +11,10 @@ namespace ggj.rootbeer
         [Header("Game Tuning")]
         public int numberTries;
         [HideInInspector] public int triesLeft;
-        public float requiredScoreDistanceForWinEnding = 0.2f;
-        public float requiredScoreDistanceForOkayEnding = 0.4f;
+        public float requiredScoreDistanceForWinEnding = 0.4f;
+        public float requiredScoreDistanceForOkayEnding = 0.6f;
+        public float happyZone = .7f;
+        public float mediumZone = .4f;
 
         [Header("Game Object References")]
         [HideInInspector] public Patron[] activePatrons =  new Patron[2];
@@ -23,6 +25,7 @@ namespace ggj.rootbeer
         public float PatronStartingDistanceToTarget;
         public Transform[] patronEntryAnimOrigin;
         public Transform charactersGrouping;
+        public EmojiBubble[] emojiBubbles;
 
         int currentLevel=0;
 
@@ -48,21 +51,46 @@ namespace ggj.rootbeer
                 //compare to preferences to generate a score (0 to 1.0)
                 scores[p] = activePatrons[p].Score(drink);
 
-
                 //move the patron closer to the drink if liked or closer to their origin point if disliked
                 //pass a float 0 to 1.0 along with 
-                //Patron.Scooch();
+                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, drink.transform.position);
                 //
+                if (scores[p] >= happyZone)
+                {
+                    //characters are close enough to win
+                    //show emotion emoji
+                    activePatrons[p].popEmoji(activePatrons[p].closeEmoji);
+                }
+                else if (scores[p] >=  mediumZone)
+                {
+                    //we made it to okay territory
+                    //show emotion emoji and show hint emoji
+                    activePatrons[p].doublePopEmoji(activePatrons[p].mediumEmoji, activePatrons[p].hint);
+                }
+                else
+                {
+                    //we're far away
+                    //show emotion emoji and show hint emoji
+                    activePatrons[p].doublePopEmoji(activePatrons[p].mediumEmoji, activePatrons[p].hint);
+                }
+
+
+
+
             }
 
             //check if scores are close enough
             if (scores[0]-scores[1]< requiredScoreDistanceForWinEnding)
             {
                 //characters are close enough to win
-
+                //show emotion emoji
+                
 
             }
-            //for other endings we also need to be out of tries
+            
+
+
+            //are we out of tries?
             else if (triesLeft <= 0)
             {
                 if (scores[0] - scores[1] < requiredScoreDistanceForOkayEnding)
@@ -114,8 +142,11 @@ namespace ggj.rootbeer
             for(int i=0; i<2; i++)
             {
                 activePatrons[i] = Instantiate(Patrons[currentLevel+i], patronEntryAnimOrigin[i].position, Quaternion.identity);
+                activePatrons[i].emojiBubble = emojiBubbles[i];
                 activePatrons[i].EnterSeat(patronOrigins[i].transform.position, i*.3f);
                 activePatrons[i].transform.SetParent(charactersGrouping);
+                
+
             }
 
             UpdateTargetFlavorProfile();
@@ -129,6 +160,7 @@ namespace ggj.rootbeer
 
         public void NewDrink() {
             // TODO
+            tryToServe();
         }
 
         #endregion
