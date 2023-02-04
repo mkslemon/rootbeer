@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace ggj.rootbeer
 {
+    [System.Serializable]
     public class FlavorProfile
     {
         public float Sweet { get; set; }
