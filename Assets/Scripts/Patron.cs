@@ -53,5 +53,12 @@ namespace ggj.rootbeer
         {
             Sequence sequence = DOTween.Sequence();
         }
+
+        public void EnterSeat(Vector3 target, float delay)
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.AppendInterval(delay + .5f);
+            sequence.Append(transform.DOMove(target, 1f).SetEase(Ease.OutBack));
+        }
     }
 }

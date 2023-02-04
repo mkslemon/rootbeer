@@ -14,11 +14,16 @@ namespace ggj.rootbeer
         public float requiredScoreDistanceForOkayEnding;
 
         [Header("Game Object References")]
-        public Patron[] activePatrons;
+        [HideInInspector] public Patron[] activePatrons;
+        public Patron[] Patrons;
         public Drink drink;
         public Transform[] patronOrigins;
+        public Transform[] patronEntryAnimOrigin;
+        public Transform charactersGrouping;
 
-    private void Awake()
+        int currentLevel=0;
+
+        private void Awake()
         {
             _GAMEMANAGER = this;
         }
@@ -70,12 +75,27 @@ namespace ggj.rootbeer
         // Start is called before the first frame update
         void Start()
         {
-
+            ShowNextCharacters();
         }
 
         // Update is called once per frame
         void Update()
         {
+
+        }
+
+
+        //take a dependency tht there are 2+ charas and an even number
+        void ShowNextCharacters()
+        {
+            for(int i=0; i<2; i++)
+            {
+                activePatrons[i] = Instantiate(Patrons[currentLevel+i], patronEntryAnimOrigin[i].position, Quaternion.identity);
+                activePatrons[i].EnterSeat(patronOrigins[i].transform.position, i*.3f);
+                activePatrons[i].transform.SetParent(charactersGrouping);
+            }
+
+            
 
         }
     }
