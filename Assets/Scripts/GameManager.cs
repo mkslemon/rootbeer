@@ -97,23 +97,32 @@ namespace ggj.rootbeer
             if (scores[0]-scores[1]< requiredScoreDistanceForWinEnding)
             {
                 //characters are close enough to win
-                //show emotion emoji
-                
+                //show emotion emoji for both
+                foreach(Patron p in activePatrons)
+                {
+                    p.popEmoji(p.closestEnd);
+                }
 
             }
-            
-
-
             //are we out of tries?
             else if (triesLeft <= 0)
             {
                 if (scores[0] - scores[1] < requiredScoreDistanceForOkayEnding)
                 {
                     //out of tries and we made it to okay ending territory
+                    foreach (Patron p in activePatrons)
+                    {
+                        p.popEmoji(p.mediumEnd);
+                    }
                 }
                 else
                 {
                     //out of tries and didn't even make it to the okay ending!
+                    //out of tries and we made it to okay ending territory
+                    foreach (Patron p in activePatrons)
+                    {
+                        p.popEmoji(p.farEnd);
+                    }
                 }
             }
             

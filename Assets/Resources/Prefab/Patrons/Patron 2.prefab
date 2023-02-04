@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791071426667094082}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.23, y: 3.05, z: 0}
+  m_LocalPosition: {x: -1.5, y: 3.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PreferredToppings: 
   HatedToppings: 
-  speakingAnchor: {fileID: 0}
+  speakingAnchor: {fileID: 2682813198661250082}
   emojiBubble: {fileID: 0}
   firstImpression: 0
   closeEmoji: 0
