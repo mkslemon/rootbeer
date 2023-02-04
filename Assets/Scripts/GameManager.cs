@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace ggj.rootbeer
 {
@@ -10,14 +11,16 @@ namespace ggj.rootbeer
         [Header("Game Tuning")]
         public int numberTries;
         [HideInInspector] public int triesLeft;
-        public float requiredScoreDistanceForWinEnding;
-        public float requiredScoreDistanceForOkayEnding;
+        public float requiredScoreDistanceForWinEnding = 0.2f;
+        public float requiredScoreDistanceForOkayEnding = 0.4f;
 
         [Header("Game Object References")]
         [HideInInspector] public Patron[] activePatrons;
         public Patron[] Patrons;
         public Drink drink;
         public Transform[] patronOrigins;
+        private FlavorProfile targetFlavorProfile;
+        public float PatronStartingDistanceToTarget;
         public Transform[] patronEntryAnimOrigin;
         public Transform charactersGrouping;
 
@@ -31,7 +34,8 @@ namespace ggj.rootbeer
 
         public void tryToServe()
         {
-            float[] scores = new float[2];
+
+            float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, targetFlavorProfile) / PatronStartingDistanceToTarget).ToArray();
             //for each patron, compare the served drinks then see how they react
             for(int p= 0; p<activePatrons.Length; p++)
             {
@@ -69,7 +73,20 @@ namespace ggj.rootbeer
 
         }
 
+        public void UpdateTargetFlavorProfile()
+        {
+            targetFlavorProfile = activePatrons[0].FlavorProfile.GetAverage(activePatrons[1].FlavorProfile);
+        }
 
+        public void GetStartingDistance(FlavorProfile targetFlavorProfile)
+        {
+            // call this any time new patrons are loaded to update the value
+            PatronStartingDistanceToTarget = activePatrons[0].FlavorProfile.GetDistance(targetFlavorProfile); // this should be the same for both since the target is an average, update this function if this is no longer true
+        }
+        public float GetDistanceToTarget(Patron p, FlavorProfile targetFlavorProfile)
+        {
+            return p.FlavorProfile.GetDistance(targetFlavorProfile) / PatronStartingDistanceToTarget;
+        }
 
 
         // Start is called before the first frame update
