@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace ggj.rootbeer
 {
     public enum ToppingName { Orange_Peel, Coconut, Candy_Cane }
