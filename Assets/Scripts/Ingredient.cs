@@ -5,13 +5,32 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     private FlavorTooltip _flavorTooltip;
+    private bool _mouseInside;
 
+    #region Unity
     private void Awake() {
         _flavorTooltip = GameObject.Find("IngredientFlavorTooltip").GetComponent<FlavorTooltip>();
         _flavorTooltip.gameObject.SetActive(false);
     }
 
+    private void Update() {
+
+        if (_mouseInside) {
+            if (Input.GetMouseButton(0)) {
+                Debug.Log("Mouse down");
+
+            }
+
+            if (Input.GetMouseButtonUp(0)) {
+                Debug.Log("Mouse up");
+            }
+        }
+    }
+    #endregion
+
+    #region Mouse controls
     private void OnMouseEnter() {
+        _mouseInside = true;
 
         // set the _flavorTooltip position to the screen position
         Vector3 screenPosition = Input.mousePosition;
@@ -26,6 +45,9 @@ public class Ingredient : MonoBehaviour
     }
 
     private void OnMouseExit() {
+        _mouseInside = false;
+
         _flavorTooltip.gameObject.SetActive(false);
     }
+    #endregion
 }
