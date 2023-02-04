@@ -35,7 +35,7 @@ namespace ggj.rootbeer
         public void tryToServe()
         {
 
-            float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, targetFlavorProfile) / PatronStartingDistanceToTarget).ToArray();
+            float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, drink.GetFlavor()) / PatronStartingDistanceToTarget).ToArray();
             //for each patron, compare the served drinks then see how they react
             for(int p= 0; p<activePatrons.Length; p++)
             {
