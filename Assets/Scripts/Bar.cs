@@ -13,6 +13,7 @@ namespace ggj.rootbeer
         [SerializeField] private GameManager _gameManager;
 
         [SerializeField] FlavorTooltip _drinkFlavorTooltip;
+        [SerializeField] GameObject _serverButtonGO;
 
         private FlavorProfile _drinkFlavorProfile;
 
@@ -73,6 +74,11 @@ namespace ggj.rootbeer
                 _drinkFlavorProfile = FlavorProfile.GetAverages(_currentFlavorProfiles);
             }
 
+            if (_currentFlavorProfiles.Count >= 3)
+                _serverButtonGO.SetActive(true);
+            else
+                _serverButtonGO.SetActive(false);
+
             RenderDrink();
             _drinkFlavorTooltip.SetFlavorProfile(_drinkFlavorProfile);
         }
@@ -82,6 +88,7 @@ namespace ggj.rootbeer
             _syrup = null;
             _topping = null;
             _drinkFlavorProfile = null;
+            _serverButtonGO.SetActive(false);
         }
 
         public void RenderDrink() {
@@ -89,7 +96,7 @@ namespace ggj.rootbeer
             Debug.Log("Not implemented");
         }
 
-        public void ServerDrink() {
+        public void ServeDrink() {
 
             _gameManager.NewDrink();
         }
