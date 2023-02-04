@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -58,5 +59,23 @@ namespace ggj.rootbeer
             // returns distance
             return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
         }
+
+        public static FlavorProfile GetAverages(IEnumerable<FlavorProfile> flavorProfiles) {
+            (float sweet, float sour, float salty, float bitter) values = (0f, 0f, 0f, 0f);
+
+            foreach (FlavorProfile flavorProfile in flavorProfiles) {
+                values.sweet += flavorProfile.Sweet;
+                values.sour += flavorProfile.Sour;
+                values.salty += flavorProfile.Salty;
+                values.bitter += flavorProfile.Bitter;
+            }
+
+            values.sweet /= flavorProfiles.Count();
+            values.sour /= flavorProfiles.Count();
+            values.salty /= flavorProfiles.Count();
+            values.bitter /= flavorProfiles.Count();
+
+            return new FlavorProfile(values.sweet, values.sour, values.salty, values.bitter);
+        } 
     }
 }

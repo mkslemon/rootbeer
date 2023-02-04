@@ -116,5 +116,13 @@ namespace ggj.rootbeer
             GetStartingDistance(targetFlavorProfile);
 
         }
+
+        #region Drinks
+
+        public void NewDrink() {
+            // TODO
+        }
+
+        #endregion
     }
 }
