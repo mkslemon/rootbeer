@@ -67,6 +67,7 @@ public class Ingredient : MonoBehaviour
     }
 
     private void OnMouseExit() {
+        Debug.Log("here");
         _mouseInside = false;
 
         _flavorTooltip.GetComponent<CanvasGroup>().alpha = 1f;
