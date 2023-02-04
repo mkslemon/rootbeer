@@ -93,12 +93,14 @@ namespace ggj.rootbeer
 
             }
 
+            bool levelOver = false;
             //check if scores are close enough
             if (scores[0]-scores[1]< requiredScoreDistanceForWinEnding)
             {
+                levelOver = true;
                 //characters are close enough to win
                 //show emotion emoji for both
-                foreach(Patron p in activePatrons)
+                foreach (Patron p in activePatrons)
                 {
                     p.popEmoji(p.closestEnd);
                 }
@@ -107,6 +109,7 @@ namespace ggj.rootbeer
             //are we out of tries?
             else if (triesLeft <= 0)
             {
+                levelOver = true;
                 if (scores[0] - scores[1] < requiredScoreDistanceForOkayEnding)
                 {
                     //out of tries and we made it to okay ending territory
@@ -125,8 +128,26 @@ namespace ggj.rootbeer
                     }
                 }
             }
-            
-            
+
+            //is there another level?
+            if (levelOver)
+            {
+                currentLevel++;
+                if (Patrons.Length > (currentLevel+1 * 2))
+                {
+                    //todo show fanfare
+
+
+                    ShowNextCharacters();
+
+                }
+                else
+                {//the game is over
+
+                    //todo show fanfare
+
+                }
+            }
 
         }
 
@@ -164,7 +185,11 @@ namespace ggj.rootbeer
         {
             for(int i=0; i<2; i++)
             {
-                activePatrons[i] = Instantiate(Patrons[currentLevel+i], patronEntryAnimOrigin[i].position, Quaternion.identity);
+                if (activePatrons[i] != null)
+                {
+                    Destroy(activePatrons[i]);
+                }
+                activePatrons[i] = Instantiate(Patrons[(currentLevel*2)+i], patronEntryAnimOrigin[i].position, Quaternion.identity);
                 activePatrons[i].emojiBubble = emojiBubbles[i];
                 activePatrons[i].EnterSeat(patronOrigins[i].transform.position, i*.3f);
                 activePatrons[i].transform.SetParent(charactersGrouping);
