@@ -31,7 +31,7 @@ namespace ggj.rootbeer
             for(int p= 0; p<activePatrons.Length; p++)
             {
                 //compare to preferences to generate a score (0 to 1.0)
-                //scores[p] = activePatrons[p]Score(drink);
+                scores[p] = activePatrons[p].Score(drink);
 
 
                 //move the patron closer to the drink if liked or closer to their origin point if disliked
