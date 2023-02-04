@@ -63,6 +63,7 @@ public class EmojiBubble : MonoBehaviour
     {
         Sequence sq = DOTween.Sequence();
         sq.Append(fadeEmoji());
+        sq.AppendInterval(.3f);
         sq.Append(popEmoji(emote));
         sq.AppendInterval(3f);
         sq.Append(fadeEmoji());

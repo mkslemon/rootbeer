@@ -93,6 +93,8 @@ namespace ggj.rootbeer
 
             }
 
+            Bar.Instance.ClearDrink();
+
             bool levelOver = false;
             //check if scores are close enough
             if (scores[0]-scores[1]< requiredScoreDistanceForWinEnding)
@@ -128,7 +130,7 @@ namespace ggj.rootbeer
                     }
                 }
             }
-
+            
             //is there another level?
             if (levelOver)
             {

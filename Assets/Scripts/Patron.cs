@@ -97,6 +97,8 @@ namespace ggj.rootbeer
         public Sequence popAndHideEmoji(Emojimotion emotion)
         {
             Sequence sq = DOTween.Sequence();
+            sq.Append(emojiBubble.fadeEmoji());
+            sq.AppendInterval(.3f);
             sq.Append(emojiBubble.popEmoji(emotion));
             sq.AppendInterval(3f);
             sq.Append(emojiBubble.fadeEmoji());
