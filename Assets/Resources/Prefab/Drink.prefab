@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1990872356662958149}
   - component: {fileID: 1275906453202389828}
   - component: {fileID: 2414946722584539450}
-  - component: {fileID: 8743249775219850461}
   m_Layer: 0
   m_Name: Straw
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8743249775219850461
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505901581257727652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &1828435357654528197
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,9 +143,10 @@ GameObject:
   - component: {fileID: 1828435358112373582}
   - component: {fileID: 1828435358112373569}
   - component: {fileID: 1828435358112373568}
+  - component: {fileID: 4226738649139203256}
   m_Layer: 0
   m_Name: Cup
-  m_TagString: Untagged
+  m_TagString: Cup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -244,6 +230,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &4226738649139203256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828435358112373570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05e8293de59bd485bab25e385c482a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1828435358712789851
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +253,6 @@ GameObject:
   - component: {fileID: 1828435358712789848}
   - component: {fileID: 1828435358712789799}
   - component: {fileID: 1828435358712789798}
-  - component: {fileID: 1828435358712789849}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -328,20 +325,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1828435358712789849
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828435358712789851}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2508003408384455943
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +352,9 @@ Transform:
   m_LocalPosition: {x: 0.2712624, y: -1.8596511, z: -0.024526834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1499923370491744272}
+  - {fileID: 7763068102951952133}
   m_Father: {fileID: 7831752529838283159}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,8 +387,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7348234325820539950}
-  - {fileID: 1499923370491744272}
-  - {fileID: 7763068102951952133}
   - {fileID: 7815897476770236868}
   m_Father: {fileID: 1828435357654528194}
   m_RootOrder: 2
@@ -419,7 +402,6 @@ GameObject:
   - component: {fileID: 7763068102951952133}
   - component: {fileID: 6423399656086466277}
   - component: {fileID: 7729296038572025425}
-  - component: {fileID: 6686287057233848989}
   m_Layer: 0
   m_Name: StrawEnd
   m_TagString: Untagged
@@ -435,12 +417,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4339446274180978427}
   m_LocalRotation: {x: -0, y: -0, z: 0.60876137, w: 0.7933534}
-  m_LocalPosition: {x: -0.48873758, y: -0.029651046, z: -0.024526834}
-  m_LocalScale: {x: 0.10000002, y: 0.25, z: 0.1}
+  m_LocalPosition: {x: -0.76, y: 1.83, z: 0}
+  m_LocalScale: {x: 0.100000024, y: 0.25, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7831752529838283159}
-  m_RootOrder: 2
+  m_Father: {fileID: 7348234325820539950}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 75}
 --- !u!33 &6423399656086466277
 MeshFilter:
@@ -492,20 +474,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6686287057233848989
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4339446274180978427}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6479591694464678114
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +505,7 @@ Transform:
   - {fileID: 1990872356662958149}
   - {fileID: 6513528879113040708}
   m_Father: {fileID: 7831752529838283159}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8300281880760531158
 GameObject:
@@ -550,7 +518,6 @@ GameObject:
   - component: {fileID: 1499923370491744272}
   - component: {fileID: 4576550971024454386}
   - component: {fileID: 6791741812206920185}
-  - component: {fileID: 865216359162058977}
   m_Layer: 0
   m_Name: Straw
   m_TagString: Untagged
@@ -566,12 +533,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8300281880760531158}
   m_LocalRotation: {x: -0, y: -0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: -0.028737605, y: -1.0196512, z: -0.024526834}
-  m_LocalScale: {x: 0.10000002, y: 1, z: 0.1}
+  m_LocalPosition: {x: -0.3, y: 0.8399999, z: 0}
+  m_LocalScale: {x: 0.100000024, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7831752529838283159}
-  m_RootOrder: 1
+  m_Father: {fileID: 7348234325820539950}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!33 &4576550971024454386
 MeshFilter:
@@ -623,20 +590,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &865216359162058977
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300281880760531158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8622470002506951142
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +601,6 @@ GameObject:
   - component: {fileID: 6513528879113040708}
   - component: {fileID: 6847277788754384001}
   - component: {fileID: 3070318707782217052}
-  - component: {fileID: 1775748160982987394}
   m_Layer: 0
   m_Name: StrawEnd
   m_TagString: Untagged
@@ -721,17 +673,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1775748160982987394
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8622470002506951142}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

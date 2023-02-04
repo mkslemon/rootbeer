@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6557385941190904343}
   - component: {fileID: 4877143054030353274}
-  - component: {fileID: 3260824093029907101}
   - component: {fileID: 1574576533483116034}
+  - component: {fileID: 7286725006851178569}
   m_Layer: 0
   m_Name: Ingredient
   m_TagString: Ingredient
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &3260824093029907101
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6557385941190904342}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 3, z: 2.5}
-  m_Center: {x: 0, y: 0, z: 1.25}
 --- !u!114 &1574576533483116034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7012d9e59ea0645f19a918cbd534d46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &7286725006851178569
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557385941190904342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
