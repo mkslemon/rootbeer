@@ -8,9 +8,9 @@ namespace ggj.rootbeer {
     public class Ingredient : MonoBehaviour {
         public static Ingredient ActiveInstance;
 
-        [SerializeField] private Juice _juice;
-        [SerializeField] private Syrup _syrup;
-        [SerializeField] private Topping _topping;
+        public Juice _juice;
+        public Syrup _syrup;
+        public Topping _topping;
 
         private FlavorTooltip _flavorTooltip;
         private bool _mouseInside;
@@ -61,9 +61,14 @@ namespace ggj.rootbeer {
         private void Dragging() {
             transform.position = _mousePositionWorld - _positionOffset;
 
-            if (transform.position.x > -1 && transform.position.x < 1 && transform.position.y > -1 && transform.position.y < 1) {
+            if (transform.position.x > -1f && transform.position.x < 1f && transform.position.y > -1.25f && transform.position.y < 1f) {
                 // we're within the cup boundary
-                Debug.Log("in bound");
+                if (_juice != null)
+                    Bar.Instance.SetJuice(_juice);
+                else if (_syrup != null)
+                    Bar.Instance.SetSyrup(_syrup);
+                else if (_topping != null)
+                    Bar.Instance.SetTopping(_topping);
             }
 
         }
