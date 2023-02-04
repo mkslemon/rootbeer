@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class Ingredient : MonoBehaviour
 {
@@ -40,14 +42,19 @@ public class Ingredient : MonoBehaviour
 
         _flavorTooltip.gameObject.transform.position = screenPosition;
         _flavorTooltip.gameObject.SetActive(true);
-
+        _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
+        _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
 
     }
 
     private void OnMouseExit() {
         _mouseInside = false;
 
-        _flavorTooltip.gameObject.SetActive(false);
+        _flavorTooltip.GetComponent<CanvasGroup>().alpha = 1f;
+        _flavorTooltip.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => {
+            _flavorTooltip.gameObject.SetActive(false);
+        });
+        
     }
     #endregion
 }
