@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameManager : MonoBehaviour
+namespace ggj.rootbeer
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameManager : MonoBehaviour
     {
-        
-    }
+        public static GameManager _GAMEMANAGER;
+        public Patron[] activePatrons;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake()
+        {
+            _GAMEMANAGER = this;
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
