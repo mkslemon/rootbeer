@@ -32,9 +32,12 @@ namespace ggj.rootbeer
         public CanvasGroup winBlurb;
         public CanvasGroup helpBlurb;
         public GameObject[] heartsLeft;
+        public GameObject[] winHearts;
+        public CanvasGroup endOfGameGroup;
         bool firstTime = true;
 
         int currentLevel=0;
+        int wins = 0;
 
         [SerializeField] private List<Ingredient> _ingredients;
         [SerializeField] List<Color> _ingredientColors;
@@ -115,6 +118,7 @@ namespace ggj.rootbeer
             if ((1-scores[0])+(1-scores[1])< requiredScoreDistanceForWinEnding)
             {
                 levelOver = true;
+                wins++;
                 //characters are close enough to win
                 //show emotion emoji for both
                 foreach (Patron p in activePatrons)
@@ -171,7 +175,11 @@ namespace ggj.rootbeer
                 {//the game is over
 
                     //todo show fanfare
-
+                    endOfGameGroup.DOFade(1f, 1f).SetDelay(2f);
+                    for(int i = wins; i<heartsLeft.Length; i++)
+                    {
+                        heartsLeft[i].gameObject.SetActive(false);
+                    }
                 }
             }
 

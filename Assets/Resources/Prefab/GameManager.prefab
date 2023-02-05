@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberTries: 5
   triesLeft: 0
-  requiredScoreDistanceForWinEnding: 0.3
+  requiredScoreDistanceForWinEnding: 0.4
   requiredScoreDistanceForOkayEnding: 0.5
   happyZone: 0.7
   mediumZone: 0.4
@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
   - {fileID: 4646893017187543251, guid: 5e9ef3bf7af167e4e8d578f1d55f9bca, type: 3}
   - {fileID: 4646893017187543251, guid: 9feecc544b1aeb64fb119fee5036ed67, type: 3}
+  - {fileID: 4646893017187543251, guid: 6fd24aed2500f49faa5f3a90142c0ca7, type: 3}
+  - {fileID: 4646893017187543251, guid: c8f363c2e51be4b5fbae6da4f3e9cadc, type: 3}
   patronOrigins:
   - {fileID: 0}
   - {fileID: 0}
@@ -98,4 +100,7 @@ MonoBehaviour:
   - {r: 0.7960785, g: 0.27058825, b: 0.22352943, a: 0}
   - {r: 1, g: 1, b: 1, a: 0}
   - {r: 0.21026169, g: 0.22018091, b: 0.990566, a: 0}
-  _toppingSprites: []
+  _toppingMaterials:
+  - {fileID: 2100000, guid: cb0cd47bbe28f4738afde52fdefff29a, type: 2}
+  - {fileID: 2100000, guid: 8eb4db10127634a81861e0af096c5f6a, type: 2}
+  - {fileID: 2100000, guid: 5fc21661c1c6b4d5baba016ae2c89626, type: 2}
