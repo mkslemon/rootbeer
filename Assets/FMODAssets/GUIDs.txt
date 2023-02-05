@@ -1,0 +1,7 @@
+{12396322-0cd8-4b7f-a348-1e4a5a1c3369} bank:/Master
+{8a2443f6-7da3-073d-2501-94b4abef35f1} bank:/Master.strings
+{eed8a3c4-8638-48be-a7f4-f41e29205d30} bus:/
+{8dd421aa-cf1c-4c32-85e6-722871dda0f3} bus:/Reverb
+{663aab2b-9a2e-4dd8-ad77-2dbfd29b1926} event:/Main MX BG Loop
+{e1bf264d-185e-477b-93a5-4a2bf4f04a84} parameter:/Proximity
+{06ebacde-ea31-4022-99a1-a19a59b4bc24} parameter:/Result
