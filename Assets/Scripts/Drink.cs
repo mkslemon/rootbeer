@@ -24,6 +24,8 @@ namespace ggj.rootbeer
         [SerializeField] private ParticleSystemRenderer _toppingSystemRenderer;
         [SerializeField] private Transform _planeTransform;
 
+        [SerializeField] private ParticleSystem _iceSystem;
+
         private float[] _fillPercs = { -15, -5, 0 };
 
         #region Unity
@@ -70,6 +72,13 @@ namespace ggj.rootbeer
             Color liquidColor = GetColor();
             _drinkMaterial.SetColor("_BaseColor", liquidColor);
 
+
+            // Add ice
+            if (Juice != null || Syrup != null) {
+                _iceSystem.Clear();
+                _iceSystem.Emit(3);
+            }
+
             // Set the topping material and emit a topping particle
             if (Topping != null) {
                 _toppingSystem.Clear();
@@ -82,6 +91,9 @@ namespace ggj.rootbeer
         public void EmptyRender() {
             _drinkMaterial.DOKill();
             _drinkMaterial.DOFloat(_fillPercs[0], "_FillPerc", 5);
+
+            _toppingSystem.Clear();
+            _iceSystem.Clear();
         }
 
         public Color GetColor()
