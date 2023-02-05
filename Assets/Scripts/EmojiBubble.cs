@@ -56,6 +56,26 @@ public class EmojiBubble : MonoBehaviour
 
     }
 
+    public Sequence popFirstEmoji(Sprite emote)
+    {
+
+        Sequence sq = DOTween.Sequence();
+
+        sq.AppendCallback(() =>
+        {
+            emoji.sprite = emote;
+            emoji.color = new Color(emoji.color.r, emoji.color.g, emoji.color.b, 0);
+            gameObject.SetActive(true);
+        }
+        );
+        sq.Append(canvasGroup.DOFade(1, .4f));
+        sq.Insert(0.2f, emoji.DOFade(1, .4f));
+        sq.AppendInterval(1f);
+
+
+        return sq;
+    }
+
     public Sequence popEmoji(Sprite emote)
     {
         
@@ -65,6 +85,7 @@ public class EmojiBubble : MonoBehaviour
         {
             emoji.sprite = emote;
             emoji.color = new Color(emoji.color.r, emoji.color.g, emoji.color.b, 0);
+            //gameObject.SetActive(true);
         }
         );
         sq.Append(canvasGroup.DOFade(1, .4f));

@@ -184,7 +184,7 @@ namespace ggj.rootbeer
                 if(Patrons.Length <= (currentLevel * 2))
                 {//the game is over
 
-                    endOfGameGroup.DOFade(1f, 1f).SetDelay(2f);
+                    endOfGameGroup.DOFade(1f, 1f).SetDelay(5f);
                     for(int i = wins; i<heartsLeft.Length; i++)
                     {
                         heartsLeft[i].gameObject.SetActive(false);

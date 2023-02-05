@@ -145,11 +145,12 @@ namespace ggj.rootbeer
             Sequence sequence = DOTween.Sequence();
 
             sequence.AppendInterval(delay + .5f);
-            sequence.AppendCallback(() => { emojiBubble.gameObject.SetActive(true); });
+            
             sequence.Append(transform.DOMove(target, 1f).SetEase(Ease.OutBack));
             sequence.InsertCallback(1.3f, () => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 10; uwu.sortingOrder = 11; } });
+            
             sequence.AppendInterval(.2f);
-            sequence.Append(popEmoji(firstImpression));
+            sequence.Append(popFirstEmoji(firstImpression));
             sequence.Insert(0, uwu.DOColor(new Color(uwu.color.r, uwu.color.g, uwu.color.b, 0), .01f));
         }
 
@@ -173,8 +174,18 @@ namespace ggj.rootbeer
 
         public Sequence popEmoji(Sprite emote)
         {
+            
+
             return emojiBubble.popEmoji(emote);
         }
+
+        public Sequence popFirstEmoji(Sprite emote)
+        {
+
+
+            return emojiBubble.popFirstEmoji(emote);
+        }
+        
 
         public Sequence doublePopEmoji(Sprite emote, Sprite emote2)
         {
