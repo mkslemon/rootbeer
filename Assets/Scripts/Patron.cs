@@ -7,7 +7,7 @@ namespace ggj.rootbeer
 {
     public class Patron : MonoBehaviour
     {
-        public FlavorProfile FlavorProfile = new FlavorProfile(0.5f, 0.5f, 0.5f, 0.5f);
+        public FlavorProfile FlavorProfile;
         public List<ToppingName> PreferredToppings;
         public List<ToppingName> HatedToppings;
         public Transform speakingAnchor;
@@ -38,10 +38,7 @@ namespace ggj.rootbeer
         // Start is called before the first frame update
         void Start()
         {
-            if (FlavorProfile == null)
-            {
-                FlavorProfile = new FlavorProfile(flavorCitrus, flavorFloral, flavorSweet, flavorExotic);
-            }
+            FlavorProfile = new FlavorProfile(flavorCitrus, flavorFloral, flavorSweet, flavorExotic);
             if (PreferredToppings == null)
             {
                 PreferredToppings = new List<ToppingName>();

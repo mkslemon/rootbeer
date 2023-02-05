@@ -12,7 +12,7 @@ namespace ggj.rootbeer
         [Header("Game Tuning")]
         public int numberTries;
         [HideInInspector] public int triesLeft;
-        public float requiredScoreDistanceForWinEnding = 0.4f;
+        public float requiredScoreDistanceForWinEnding = 0.1f;
         public float requiredScoreDistanceForOkayEnding = 0.6f;
         public float happyZone = .7f;
         public float mediumZone = .4f;
