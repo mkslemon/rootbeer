@@ -70,8 +70,13 @@ namespace ggj.rootbeer
 
 
             //trying to return cosin sim between lists [-1,1] normalized to the [0,1] space
-            return (GetCosineSimilarity(myList, otherList)/2) + .5f;
-           // return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
+            //return (GetCosineSimilarity(myList, otherList)/2) + .5f;
+           return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
+        }
+        
+        public override string ToString()
+        {
+            return "Citrus: " + Citrus + ", Floral: " + Floral + ", Sweet: " + Sweet + "Exotic: " + Exotic;
         }
 
         //https://stackoverflow.com/questions/7560760/cosine-similarity-code-non-term-vectors idk what this does, but it's supposedly cosin similarity :V
@@ -94,7 +99,8 @@ namespace ggj.rootbeer
 
         public static FlavorProfile GetAverages(IEnumerable<FlavorProfile> flavorProfiles) {
             List<float[]> flavorArrays = flavorProfiles.Select(sel => sel.GetAsArray()).ToList();
-            var AverageFlavor = Enumerable.Range(1, flavorArrays[0].Length).Select(i => flavorArrays.Select(flavor => flavor[i]).Sum() / flavorArrays.Count).ToArray();
+
+            var AverageFlavor = Enumerable.Range(0, flavorArrays[0].Length).Select(i => flavorArrays.Select(flavor => flavor[i]).Sum() / flavorArrays.Count).ToArray();
             return new FlavorProfile(AverageFlavor);
         }
     }

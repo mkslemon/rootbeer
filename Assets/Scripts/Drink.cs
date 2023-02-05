@@ -33,7 +33,7 @@ namespace ggj.rootbeer
         //    // get average of all flavors present
         //    // can also add flavors to toppings, but ignoring for now until further clarification, also the toppings would have less influence so that would need to be accounted for
         //    List<float[]> flavorArrays = Syrups.Select(sel => sel.FlavorProfile.GetAsArray()).ToList();
-        //    var AverageFlavor = Enumerable.Range(1, flavorArrays[0].Length).Select(i => flavorArrays.Select(flavor => flavor[i]).Sum() / flavorArrays.Count).ToArray();
+        //    var AverageFlavor = Enumerable.Range(0, flavorArrays[0].Length).Select(i => flavorArrays.Select(flavor => flavor[i]).Sum() / flavorArrays.Count).ToArray();
         //    return new FlavorProfile(AverageFlavor);
         //}
 

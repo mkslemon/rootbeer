@@ -55,7 +55,7 @@ namespace ggj.rootbeer
 
         public void tryToServe()
         {
-            float[] scores = activePatrons.Select(sel => GetDistanceToTarget(sel, Drink.Instance.FlavorProfile) / PatronStartingDistanceToTarget).ToArray();
+            float[] scores = activePatrons.Select(sel => GetNormalizedDistance(sel, Drink.Instance.FlavorProfile) / PatronStartingDistanceToTarget).ToArray();
 
             //do we need to reject a served drink because player forgot something in it?
 
@@ -167,9 +167,9 @@ namespace ggj.rootbeer
             // call this any time new patrons are loaded to update the value
             PatronStartingDistanceToTarget = activePatrons[0].FlavorProfile.GetDistance(targetFlavorProfile); // this should be the same for both since the target is an average, update this function if this is no longer true
         }
-        public float GetDistanceToTarget(Patron p, FlavorProfile targetFlavorProfile)
+        public float GetNormalizedDistance(Patron p, FlavorProfile otherFlavorProfile)
         {
-            return p.FlavorProfile.GetDistance(targetFlavorProfile) / PatronStartingDistanceToTarget;
+            return p.FlavorProfile.GetDistance(otherFlavorProfile) / PatronStartingDistanceToTarget;
         }
 
 
@@ -213,6 +213,7 @@ namespace ggj.rootbeer
         #region Drinks
 
         public void NewDrink() {
+            UpdateTargetFlavorProfile();
             tryToServe();
         }
 
