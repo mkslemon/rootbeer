@@ -121,7 +121,7 @@ namespace ggj.rootbeer
         {
             Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(delay + .5f);
-            sequence.AppendCallback(() => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 0; } });
+            sequence.AppendCallback(() => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 1; } });
             sequence.Append(emojiBubble.fadeEmoji());
             sequence.Append(transform.DOMoveY(-20, 1f).SetEase(Ease.InQuad));
             sequence.InsertCallback(1.5f, () => { Destroy(gameObject); });

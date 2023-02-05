@@ -325,7 +325,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cf2c5c9d24320411ca79822d5dc24086, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -391,9 +391,11 @@ MonoBehaviour:
   altSpeakingAnchor: {fileID: 2573691558886268108}
   overlayLimbs: {fileID: 7039319103447286836}
   emojiBubble: {fileID: 0}
+  satisfied: 0
+  toBeReplaced: 0
   flavorCitrus: 0
-  flavorFloral: 0.6
-  flavorSweet: 0.6
+  flavorFloral: 0.4
+  flavorSweet: 0.8
   flavorExotic: 0
   firstImpression: 0
   closeEmoji: 0
