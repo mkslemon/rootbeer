@@ -71,7 +71,7 @@ namespace ggj.rootbeer
 
             //trying to return cosin sim between lists [-1,1] normalized to the [0,1] space
             //return (GetCosineSimilarity(myList, otherList)/2) + .5f;
-           return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
+           return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum()) / 2f; // constant for now todo
         }
         
         public override string ToString()
