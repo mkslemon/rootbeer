@@ -16,6 +16,7 @@ namespace ggj.rootbeer
         [HideInInspector]public EmojiBubble emojiBubble;
         [HideInInspector] public bool satisfied;
         [HideInInspector] public bool toBeReplaced;
+        public SpriteRenderer uwu;
 
         [Header("Likes/Dislikes")]
         public float flavorCitrus = .5f;
@@ -99,6 +100,7 @@ namespace ggj.rootbeer
             }
             lastScore = 1- FlavorProfile.GetDistance(d.FlavorProfile);
             lastScore = lastScore * lastScore;
+            
             return lastScore;
         }
 
@@ -106,6 +108,7 @@ namespace ggj.rootbeer
         {
             Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(delay);
+            
             sequence.AppendCallback(()=>
             {
                 if(lastScoredirection > 0)
@@ -132,25 +135,29 @@ namespace ggj.rootbeer
                     }
                 }
                 );
+            sequence.Insert(delay, uwu.DOColor(new Color(uwu.color.r, uwu.color.g, uwu.color.b, lastScore), 2f));
         }
 
         public void EnterSeat(Vector3 target, float delay)
         {
             DOTween.Complete(emojiBubble.transform);
+
             Sequence sequence = DOTween.Sequence();
+
             sequence.AppendInterval(delay + .5f);
             sequence.AppendCallback(() => { emojiBubble.gameObject.SetActive(true); });
             sequence.Append(transform.DOMove(target, 1f).SetEase(Ease.OutBack));
-            sequence.InsertCallback(1.3f, () => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 10; }});
+            sequence.InsertCallback(1.3f, () => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 10; uwu.sortingOrder = 11; } });
             sequence.AppendInterval(.2f);
             sequence.Append(popEmoji(firstImpression));
+            sequence.Insert(0, uwu.DOColor(new Color(uwu.color.r, uwu.color.g, uwu.color.b, 0), .01f));
         }
 
         public Sequence ExitSeat(float delay)
         {
             Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(delay + .5f);
-            sequence.AppendCallback(() => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 1; } });
+            sequence.AppendCallback(() => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 1; uwu.sortingOrder = 2; } });
             sequence.Append(emojiBubble.fadeEmoji());
             sequence.Append(transform.DOMoveY(-20, 1f).SetEase(Ease.InQuad));
             sequence.InsertCallback(1.5f, () => { Destroy(gameObject); });
