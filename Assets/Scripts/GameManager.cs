@@ -30,6 +30,9 @@ namespace ggj.rootbeer
         public EmojiBubble[] emojiBubbles;
         public TMPro.TextMeshProUGUI triesLeftText;
         public CanvasGroup winBlurb;
+        public CanvasGroup helpBlurb;
+        public GameObject[] heartsLeft;
+        bool firstTime = true;
 
         int currentLevel=0;
 
@@ -46,7 +49,7 @@ namespace ggj.rootbeer
             _ingredients[2]._juice = new Juice("Sparkling OJ", Color.red, "", new FlavorProfile(1f, 0f, 1f, 0f));
 
             _ingredients[3]._syrup = new Syrup("Vanilla", Color.red, "", new FlavorProfile(0f, 1f, 1f, 0f));
-            _ingredients[4]._syrup = new Syrup("Grenadine", Color.red, "", new FlavorProfile(0f, 0f, 1f, 0f));
+            _ingredients[4]._syrup = new Syrup("Grenadine", Color.red, "", new FlavorProfile(1f, 0f, 1f, 0f));
             _ingredients[5]._syrup = new Syrup("Coconut Creamer", Color.red, "", new FlavorProfile(0f, 1f, 0f, 1f));
 
             _ingredients[6]._topping = new Topping("Mint", "", new FlavorProfile(0f, 1f, 1f, 0f));
@@ -223,7 +226,16 @@ namespace ggj.rootbeer
             //GetStartingDistance(targetFlavorProfile);
             triesLeft = numberTries;
             updateTriesString();
+            if(firstTime == true)
+            {
+                firstTime = false;
+                Sequence sq = DOTween.Sequence();
+                sq.AppendInterval(3f);
+                sq.Append(helpBlurb.DOFade(1, 1f));
+                sq.AppendInterval(2f);
+                sq.Append(helpBlurb.DOFade(0, 2f));
 
+            }
         }
 
 
@@ -237,10 +249,12 @@ namespace ggj.rootbeer
                 if (i < (numberTries-triesLeft))
                 {
                     chancesString += "x";
+                    heartsLeft[i].SetActive(false);
                 }
                 else
                 {
                     chancesString += " ";
+                    heartsLeft[i].SetActive(true);
                 }
                 chancesString += "]";
             }

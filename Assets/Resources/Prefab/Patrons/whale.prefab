@@ -392,10 +392,10 @@ MonoBehaviour:
   emojiBubble: {fileID: 0}
   satisfied: 0
   toBeReplaced: 0
-  flavorCitrus: 0
-  flavorFloral: 0.4
-  flavorSweet: 0.8
-  flavorExotic: 0
+  flavorCitrus: 0.9
+  flavorFloral: 0.2
+  flavorSweet: 0
+  flavorExotic: 0.2
   firstImpression: {fileID: -1910167470, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
   closeEmoji: {fileID: 437942627, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
   mediumEmoji: {fileID: 1083134145, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}

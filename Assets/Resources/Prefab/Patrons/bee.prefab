@@ -225,8 +225,8 @@ MonoBehaviour:
   toBeReplaced: 0
   flavorCitrus: 0
   flavorFloral: 0
-  flavorSweet: 0.8
-  flavorExotic: 0.4
+  flavorSweet: 0.9
+  flavorExotic: 0.5
   firstImpression: {fileID: 1759422312, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
   closeEmoji: {fileID: 437942627, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
   mediumEmoji: {fileID: 844546069, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
