@@ -91,21 +91,24 @@ namespace ggj.rootbeer {
         #region Mouse controls
         private void OnMouseEnter() {
             ActiveInstance = this;
-            _mouseInside = true;
 
-            _flavorTooltip.SetFlavorProfile(_flavorProfile);
+            if (!_mouseInside) {
+                _mouseInside = true;
 
-            // set the _flavorTooltip position to the screen position
-            Vector3 screenPosition = Input.mousePosition;
-            screenPosition.z = _flavorTooltip.gameObject.transform.position.z;
-            screenPosition.x += 75f;
-            screenPosition.y += 75f;
-            _flavorTooltip.gameObject.transform.position = screenPosition;
+                _flavorTooltip.SetFlavorProfile(_flavorProfile);
 
-            // Fade in the object
-            _flavorTooltip.gameObject.SetActive(true);
-            _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
-            _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
+                // set the _flavorTooltip position to the screen position
+                Vector3 screenPosition = Input.mousePosition;
+                screenPosition.z = _flavorTooltip.gameObject.transform.position.z;
+                screenPosition.x += 75f;
+                screenPosition.y += 75f;
+                _flavorTooltip.gameObject.transform.position = screenPosition;
+
+                // Fade in the object
+                _flavorTooltip.gameObject.SetActive(true);
+                _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
+                _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
+            }
         }
 
         private void OnMouseExit() {

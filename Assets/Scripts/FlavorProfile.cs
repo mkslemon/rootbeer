@@ -58,6 +58,10 @@ namespace ggj.rootbeer
         {
             // TODO Dan would like to suggest using Cosine similarity not Euclidian distance!
             // returns distance
+
+            Debug.Log(this.GetAsArray());
+            Debug.Log(other.GetAsArray());
+
             return Mathf.Sqrt(this.GetAsArray().Zip(other.GetAsArray(), (t, o) => Mathf.Pow(t - o, 2)).Sum());
         }
 
