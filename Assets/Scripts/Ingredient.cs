@@ -15,6 +15,8 @@ namespace ggj.rootbeer {
         public Syrup _syrup;
         public Topping _topping;
 
+        private string _name;
+
         private FlavorTooltip _flavorTooltip;
         private bool _mouseInside;
         private bool _mouseInsideCup;
@@ -42,12 +44,18 @@ namespace ggj.rootbeer {
         private void Start() {
             _flavorTooltip.gameObject.SetActive(false);
 
-            if (_juice != null)
+            if (_juice != null) {
                 _flavorProfile = _juice.FlavorProfile;
-            else if (_syrup != null)
+                _name = _juice.Name;
+            }
+            else if (_syrup != null) {
                 _flavorProfile = _syrup.FlavorProfile;
-            else if (_topping != null)
+                _name = _syrup.Name;
+            }
+            else if (_topping != null) {
                 _flavorProfile = _topping.FlavorProfile;
+                _name = _topping.Name;
+            }
         }
 
         private void Update() {
@@ -157,7 +165,7 @@ namespace ggj.rootbeer {
                 //if (!_mouseInside) {
                     _mouseInside = true;
 
-                    _flavorTooltip.SetFlavorProfile(_flavorProfile);
+                    _flavorTooltip.SetFlavorProfile(_flavorProfile, _name);
 
                     // set the _flavorTooltip position to the screen position
                     Vector3 ingredientScreenPosition = Camera.main.WorldToScreenPoint(transform.position);

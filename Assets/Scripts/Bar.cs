@@ -86,7 +86,7 @@ namespace ggj.rootbeer
                 _serverButtonGO.SetActive(false);
 
             Drink.Instance.UpdateRender();
-            _drinkFlavorTooltip.SetFlavorProfile(Drink.Instance.FlavorProfile);
+            _drinkFlavorTooltip.SetFlavorProfile(Drink.Instance.FlavorProfile, "");
         }
 
         public void ClearDrink() {

@@ -1,19 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using ggj.rootbeer;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FlavorTooltip : MonoBehaviour
 {
-    [SerializeField] private FlavorProfile _flavorProfile;
+    private FlavorProfile _flavorProfile;
     [SerializeField] private List<Image> _flavorSliders;
+    [SerializeField] private TMP_Text _text;
 
     private void Awake() {
         ClearProfile();
     }
 
-    public void SetFlavorProfile(FlavorProfile flavorProfile) {
+    public void SetFlavorProfile(FlavorProfile flavorProfile, string name = null) {
+        if (name != null && _text != null)
+            _text.text = name;
+
         _flavorProfile = flavorProfile;
 
         _flavorSliders[0].fillAmount = _flavorProfile.Citrus;
