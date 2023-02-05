@@ -27,6 +27,7 @@ public class EmojiBubble : MonoBehaviour
     {
         
         Sequence sq = DOTween.Sequence();
+        sq.Append(rockingBubble.transform.DORotate(new Vector3(0, 0, -5.0f), 0.01f));
         sq.Append(rockingBubble.transform.DORotate(new Vector3(0, 0, 5.0f), 5f));
         sq.AppendInterval(.1f);
         sq.Append(rockingBubble.transform.DORotate(new Vector3(0, 0, -5.0f), 5f));
