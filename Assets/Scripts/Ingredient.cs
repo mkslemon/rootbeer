@@ -66,6 +66,7 @@ namespace ggj.rootbeer {
                 // Handle mouse clicks and dragging/releasing
                 if (Input.GetMouseButtonDown(0)) {
                     transform.DOKill();
+                    SoundManager.instance.pickupIngredient.Play();
                     _positionOffset = _mousePositionWorld - transform.position;
                     _flavorTooltip.gameObject.SetActive(false);
                     _dragging = true;
@@ -77,6 +78,7 @@ namespace ggj.rootbeer {
 
                 if (Input.GetMouseButtonUp(0)) {
                     _dragging = false;
+                    SoundManager.instance.dropIngredient.Play();
                     Released();
                 }
             }
@@ -105,12 +107,18 @@ namespace ggj.rootbeer {
                     // we're within the cup boundary
                     _mouseInsideCup = true;
 
-                    if (_juice != null)
+                    if (_juice != null) {
+                        SoundManager.instance.addBase.Play();
                         Bar.Instance.SetJuice(_juice, this);
-                    else if (_syrup != null)
+                    }
+                    else if (_syrup != null) {
+                        SoundManager.instance.addMixin.Play();
                         Bar.Instance.SetSyrup(_syrup, this);
-                    else if (_topping != null)
+                    }
+                    else if (_topping != null) {
+                        SoundManager.instance.addGarnish.Play();
                         Bar.Instance.SetTopping(_topping, this);
+                    }
 
                     Select();
                 }
