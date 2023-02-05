@@ -309,8 +309,8 @@ MonoBehaviour:
   satisfied: 0
   toBeReplaced: 0
   uwu: {fileID: 3070952523025063791}
-  flavorCitrus: 0.7
-  flavorFloral: 0.3
+  flavorCitrus: 0.3
+  flavorFloral: 0.7
   flavorSweet: 0.7
   flavorExotic: 0
   firstImpression: {fileID: 21300000, guid: a634f0e4b1ca247479f57de788fbc3b1, type: 3}
