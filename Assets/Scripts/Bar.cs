@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 namespace ggj.rootbeer
 {
     /// <summary>
@@ -103,9 +105,10 @@ namespace ggj.rootbeer
                 _currentFlavorProfiles.Add(Drink.Instance.Syrup.FlavorProfile);
             if (Drink.Instance.Topping != null) {
                 float[] profile = Drink.Instance.Topping.FlavorProfile.GetAsArray();
-                for (int i = 0; i < profile.Length; i++)
-                    profile[i] *= TOPPING_WEIGHT;
-                _currentFlavorProfiles.Add(new FlavorProfile(profile));
+                var currentAverage = FlavorProfile.GetAverages(_currentFlavorProfiles);
+                var weightedProfile = currentAverage.GetAsArray().Zip(profile, (c, t) => t + (c - t) * TOPPING_WEIGHT).ToArray();
+
+                _currentFlavorProfiles.Add(new FlavorProfile(weightedProfile));
             }
         }
 
