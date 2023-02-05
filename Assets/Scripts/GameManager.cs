@@ -57,17 +57,8 @@ namespace ggj.rootbeer
 
         public void tryToServe()
         {
-            Debug.Log("Patron1 FP: " + activePatrons[0].FlavorProfile.ToString());
-            Debug.Log("Patron2 FP: " + activePatrons[1].FlavorProfile.ToString());
-            Debug.Log("Target FP: " + targetFlavorProfile.ToString());
-            Debug.Log("Drink FP: " + Drink.Instance.FlavorProfile.ToString());
-            Debug.Log("PatronSTartingDistance: " + PatronStartingDistanceToTarget);
-            float[] dist = activePatrons.Select(sel => sel.FlavorProfile.GetDistance(Drink.Instance.FlavorProfile)).ToArray();
-            foreach(var distance in dist)
-            {
-                Debug.Log("Dist: " + distance);
-            }
-            float[] scores = activePatrons.Select(sel => GetNormalizedDistance(sel, Drink.Instance.FlavorProfile)).ToArray();
+            //compare to preferences to generate a score (0 to 1.0)
+            float[] scores = activePatrons.Select(sel => sel.Score(Drink.Instance)).ToArray();
             foreach (var score in scores)
             {
                 Debug.Log("Score: " + score);
@@ -81,8 +72,6 @@ namespace ggj.rootbeer
             //for each patron, compare the served drinks then see how they react
             for (int p= 0; p<activePatrons.Length; p++)
             {
-                //compare to preferences to generate a score (0 to 1.0)
-                scores[p] = activePatrons[p].Score(Drink.Instance);
                 Debug.Log("patron " +p+ " scores " + (scores[p]));
 
                 //move the patron closer to the drink if liked or closer to their origin point if disliked
