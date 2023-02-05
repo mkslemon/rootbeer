@@ -295,12 +295,22 @@ MonoBehaviour:
   bubble: {fileID: 8979334449793602652}
   reverseBubble: {fileID: 6935505308986594447}
   emojiIcons:
-  - {fileID: 21300000, guid: 576d0ba1845e144ea84e2dc71cb23d11, type: 3}
-  - {fileID: 21300000, guid: 576d0ba1845e144ea84e2dc71cb23d11, type: 3}
-  - {fileID: 21300000, guid: 576d0ba1845e144ea84e2dc71cb23d11, type: 3}
-  - {fileID: 21300000, guid: 576d0ba1845e144ea84e2dc71cb23d11, type: 3}
-  - {fileID: 21300000, guid: 576d0ba1845e144ea84e2dc71cb23d11, type: 3}
-  - {fileID: 21300000, guid: 576d0ba1845e144ea84e2dc71cb23d11, type: 3}
+  - {fileID: -931982882, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: -892303009, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 1460257639, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 2025538043, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: -106673821, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 1759422312, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 731756047, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: -1868710518, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 788158587, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 544150195, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 844546069, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: -150963211, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 251710525, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: -1910167470, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  - {fileID: 437942627, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  isReversed: 0
 --- !u!225 &7150288603973602300
 CanvasGroup:
   m_ObjectHideFlags: 0
