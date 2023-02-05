@@ -30,6 +30,9 @@ namespace ggj.rootbeer
         public EmojiBubble[] emojiBubbles;
         public TMPro.TextMeshProUGUI triesLeftText;
         public CanvasGroup winBlurb;
+        public CanvasGroup helpBlurb;
+        public GameObject[] heartsLeft;
+        bool firstTime = true;
 
         int currentLevel=0;
 
@@ -223,7 +226,16 @@ namespace ggj.rootbeer
             //GetStartingDistance(targetFlavorProfile);
             triesLeft = numberTries;
             updateTriesString();
+            if(firstTime == true)
+            {
+                firstTime = false;
+                Sequence sq = DOTween.Sequence();
+                sq.AppendInterval(3f);
+                sq.Append(helpBlurb.DOFade(1, 1f));
+                sq.AppendInterval(2f);
+                sq.Append(helpBlurb.DOFade(0, 2f));
 
+            }
         }
 
 
@@ -237,10 +249,12 @@ namespace ggj.rootbeer
                 if (i < (numberTries-triesLeft))
                 {
                     chancesString += "x";
+                    heartsLeft[i].SetActive(false);
                 }
                 else
                 {
                     chancesString += " ";
+                    heartsLeft[i].SetActive(true);
                 }
                 chancesString += "]";
             }
