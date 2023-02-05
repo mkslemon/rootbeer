@@ -153,8 +153,11 @@ namespace ggj.rootbeer {
 
                     // set the _flavorTooltip position to the screen position
                     Vector3 ingredientScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-                    ingredientScreenPosition += new Vector3(TOOLTIP_OFFSET.x, TOOLTIP_OFFSET.y, _flavorTooltip.gameObject.transform.position.z);
-                    _flavorTooltip.gameObject.transform.position = ingredientScreenPosition;
+                    if (ingredientScreenPosition.x > 1000)
+                        ingredientScreenPosition += new Vector3(-TOOLTIP_OFFSET.x, TOOLTIP_OFFSET.y, _flavorTooltip.gameObject.transform.position.z);
+                    else
+                        ingredientScreenPosition += new Vector3(TOOLTIP_OFFSET.x, TOOLTIP_OFFSET.y, _flavorTooltip.gameObject.transform.position.z);
+                _flavorTooltip.gameObject.transform.position = ingredientScreenPosition;
 
                     // Fade in the object
                     _flavorTooltip.gameObject.SetActive(true);
