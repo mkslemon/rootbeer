@@ -99,7 +99,7 @@ namespace ggj.rootbeer {
             transform.position = _mousePositionWorld - _positionOffset;
 
             // Check if we're inside of the cup
-            if (transform.position.x > -1f && transform.position.x < 1f && transform.position.y > -1.25f && transform.position.y < 1f)
+            if (transform.position.x > -1f && transform.position.x < 1f && transform.position.y > -1.5f && transform.position.y < 0.75f)
             {
                 if (_mouseInsideCup == false) {
                     // we're within the cup boundary
