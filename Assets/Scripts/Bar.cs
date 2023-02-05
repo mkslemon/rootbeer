@@ -19,6 +19,7 @@ namespace ggj.rootbeer
 
 
         private List<FlavorProfile> _currentFlavorProfiles;
+        private List<FlavorProfile> _prevFlavorProfiles;
 
         #region Unity
         private void Awake() {
@@ -61,8 +62,9 @@ namespace ggj.rootbeer
         }
 
         // 
-        public void Mix() {
-            GetFlavorProfiles();
+        public void Mix(bool getProfiles = true) {
+            if (getProfiles)
+                GetFlavorProfiles();
 
             if (_currentFlavorProfiles.Count == 1)
                 Drink.Instance.FlavorProfile = _currentFlavorProfiles[0];
@@ -96,6 +98,7 @@ namespace ggj.rootbeer
 
         #region Private helpers
         private void GetFlavorProfiles() {
+            _prevFlavorProfiles = _currentFlavorProfiles;
             _currentFlavorProfiles = new List<FlavorProfile>();
             if (Drink.Instance.Juice != null)
                 _currentFlavorProfiles.Add(Drink.Instance.Juice.FlavorProfile);
@@ -107,6 +110,11 @@ namespace ggj.rootbeer
                     profile[i] *= TOPPING_WEIGHT;
                 _currentFlavorProfiles.Add(new FlavorProfile(profile));
             }
+        }
+
+        private void CancelNewMix() {
+            _currentFlavorProfiles = _prevFlavorProfiles;
+            Mix(false);
         }
 
         #endregion

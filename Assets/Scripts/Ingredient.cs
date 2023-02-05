@@ -14,13 +14,14 @@ namespace ggj.rootbeer {
 
         private FlavorTooltip _flavorTooltip;
         private bool _mouseInside;
+        private bool _mouseInsideCup;
         private bool _dragging;
 
         private Vector3 _originalPosition;
         private Vector3 _positionOffset;
         private Vector3 _mousePositionWorld;
 
-        private readonly Vector2 TOOLTIP_OFFSET = new Vector2(75f, 75f);
+        private readonly Vector2 TOOLTIP_OFFSET = new Vector2(150f, 150f);
 
         private FlavorProfile _flavorProfile;
 
@@ -44,11 +45,12 @@ namespace ggj.rootbeer {
         private void Update() {
             if (_mouseInside) {
 
-                // Create the plane to project onto
+                // Get the mouse position in world coordinates
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = -Camera.main.transform.position.z - 1;
                 _mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePos);
 
+                // Handle mouse clicks and dragging/releasing
                 if (Input.GetMouseButtonDown(0)) {
                     _positionOffset = _mousePositionWorld - transform.position;
                     _flavorTooltip.gameObject.SetActive(false);
@@ -70,10 +72,16 @@ namespace ggj.rootbeer {
         #region Private helpers
 
         private void Dragging() {
+            // When we drag, we snap to the position in the world 
             transform.position = _mousePositionWorld - _positionOffset;
 
-            if (transform.position.x > -1f && transform.position.x < 1f && transform.position.y > -1.25f && transform.position.y < 1f) {
+            // Check if we're inside of the cup
+            if (transform.position.x > -1f && transform.position.x < 1f && transform.position.y > -1.25f && transform.position.y < 1f)
+            {
+
                 // we're within the cup boundary
+                _mouseInsideCup = true;
+
                 if (_juice != null)
                     Bar.Instance.SetJuice(_juice);
                 else if (_syrup != null)
@@ -81,18 +89,31 @@ namespace ggj.rootbeer {
                 else if (_topping != null)
                     Bar.Instance.SetTopping(_topping);
             }
+            else
+            {
+                _mouseInsideCup = false;
+                // If we *were* in the cup boundary but we dragged out
+                // then the user wants us not to use this ingredient, so revert
+                // back to the previous ingredients
+            }
 
         }
 
         private void Released() {
-            transform.DOMove(_originalPosition, 1f);
+            // When released, if we were in the cup jump back instantly
+            if (_mouseInsideCup)
+                transform.position = _originalPosition;
+            // otherwise, wander back slowly
+            else
+                transform.DOMove(_originalPosition, 1f);
+            _mouseInsideCup = false;
         }
 
         #endregion
 
         #region Mouse controls
         private void OnMouseEnter() {
-            if (!_dragging) {
+            if (!_dragging && ActiveInstance == null) {
                 ActiveInstance = this;
 
                 if (!_mouseInside) {
@@ -114,13 +135,14 @@ namespace ggj.rootbeer {
         }
 
         private void OnMouseExit() {
-            if (!_dragging) {
+            if (!_dragging && ActiveInstance == this) {
+                ActiveInstance = null;
                 _mouseInside = false;
                 Released();
 
                 _flavorTooltip.GetComponent<CanvasGroup>().alpha = 1f;
                 _flavorTooltip.GetComponent<CanvasGroup>().DOFade(0, 1).OnComplete(() => {
-                    if (ActiveInstance == this)
+                    if (ActiveInstance == null)
                         _flavorTooltip.gameObject.SetActive(false);
                 });
             }
