@@ -43,6 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1779482986167170101}
+  - component: {fileID: 1938782640051680550}
   m_Layer: 0
   m_Name: Syrups
   m_TagString: Untagged
@@ -65,6 +66,19 @@ Transform:
   m_Father: {fileID: 1331624918025505327}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1938782640051680550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5525948368426493462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3b7f6e17eb14a5088ff58964ee1d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ingredients: []
 --- !u!1 &7306620974687141844
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5540685259385876216}
+  - component: {fileID: 180112534288019612}
   m_Layer: 0
   m_Name: Juices
   m_TagString: Untagged
@@ -96,6 +111,19 @@ Transform:
   m_Father: {fileID: 1331624918025505327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180112534288019612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7306620974687141844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3b7f6e17eb14a5088ff58964ee1d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ingredients: []
 --- !u!1 &8309349037582357641
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1435599499433350293}
+  - component: {fileID: 1444477767794781689}
   m_Layer: 0
   m_Name: Toppings
   m_TagString: Untagged
@@ -127,3 +156,16 @@ Transform:
   m_Father: {fileID: 1331624918025505327}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1444477767794781689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309349037582357641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3b7f6e17eb14a5088ff58964ee1d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ingredients: []

@@ -8,6 +8,8 @@ namespace ggj.rootbeer {
     public class Ingredient : MonoBehaviour {
         public static Ingredient ActiveInstance;
 
+        [SerializeField] private IngredientGroup _ingredientGroup;
+
         public Juice _juice;
         public Syrup _syrup;
         public Topping _topping;
@@ -16,6 +18,9 @@ namespace ggj.rootbeer {
         private bool _mouseInside;
         private bool _mouseInsideCup;
         private bool _dragging;
+
+        public bool Highlighted = false;
+        private SpriteRenderer _spriteRenderer;
 
         private Vector3 _originalPosition;
         private Vector3 _positionOffset;
@@ -29,6 +34,8 @@ namespace ggj.rootbeer {
         private void Awake() {
             _flavorTooltip = GameObject.Find("IngredientFlavorTooltip").GetComponent<FlavorTooltip>();
             _originalPosition = transform.position;
+
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Start() {
@@ -43,6 +50,11 @@ namespace ggj.rootbeer {
         }
 
         private void Update() {
+            if (Highlighted)
+                _spriteRenderer.color = Color.white;
+            else
+                _spriteRenderer.color = Color.white;
+
             if (_mouseInside) {
 
                 // Get the mouse position in world coordinates
@@ -69,6 +81,15 @@ namespace ggj.rootbeer {
         }
         #endregion
 
+        #region Public
+
+        public void Select() {
+            _ingredientGroup.ClearSelection();
+            Highlighted = true;
+        }
+
+        #endregion
+
         #region Private helpers
 
         private void Dragging() {
@@ -83,18 +104,27 @@ namespace ggj.rootbeer {
                 _mouseInsideCup = true;
 
                 if (_juice != null)
-                    Bar.Instance.SetJuice(_juice);
+                    Bar.Instance.SetJuice(_juice, this);
                 else if (_syrup != null)
-                    Bar.Instance.SetSyrup(_syrup);
+                    Bar.Instance.SetSyrup(_syrup, this);
                 else if (_topping != null)
-                    Bar.Instance.SetTopping(_topping);
+                    Bar.Instance.SetTopping(_topping, this);
+
+                Select();
             }
             else
             {
-                _mouseInsideCup = false;
-                // If we *were* in the cup boundary but we dragged out
-                // then the user wants us not to use this ingredient, so revert
-                // back to the previous ingredients
+                if (_mouseInsideCup) {
+                    _mouseInsideCup = false;
+
+                    Bar.Instance.CancelNewMix();
+
+                    // If we *were* in the cup boundary but we dragged out
+                    // then the user wants us not to use this ingredient, so revert
+                    // back to the previous ingredients
+
+                    Debug.Log("De-select and revert ingredients in bar");
+                }
             }
 
         }
