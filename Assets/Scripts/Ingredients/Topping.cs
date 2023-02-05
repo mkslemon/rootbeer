@@ -6,10 +6,11 @@ namespace ggj.rootbeer {
         public string Name { get; set; }
         public string Text { get; set; }
         public FlavorProfile FlavorProfile { get; }
+        public Sprite ToppingSprite { get; }
 
-        public Topping(string name, string text = "", FlavorProfile flavorProfile = null) {
+        public Topping(string name, Sprite sprite, string text = "", FlavorProfile flavorProfile = null) {
             Name = name;
-            //Color = color ?? Color.black; // doing this weird thing due to the value for this parameter needing to be a compile time constant, might not be necessary to make it an optional parameter, but this works
+            ToppingSprite = sprite;
             Text = text;
             FlavorProfile = flavorProfile ?? new FlavorProfile();
         }

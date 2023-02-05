@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 namespace ggj.rootbeer
 {
@@ -20,7 +21,7 @@ namespace ggj.rootbeer
         [SerializeField] GameObject _strawGO;
         [SerializeField] private Material _drinkMaterial;
 
-        private float[] _fillPercs = { -100, -5, 0 };
+        private float[] _fillPercs = { -15, -5, 0 };
 
         #region Unity
 
@@ -44,6 +45,8 @@ namespace ggj.rootbeer
         //}
 
         public void UpdateRender() {
+            _drinkMaterial.DOKill();
+
             Color liquidColor = GetColor();
             if (Juice != null && Syrup != null)
                 _drinkMaterial.SetFloat("_FillPerc", _fillPercs[2]);
@@ -53,6 +56,11 @@ namespace ggj.rootbeer
                 _drinkMaterial.SetFloat("_FillPerc", _fillPercs[0]);
             _drinkMaterial.SetColor("_BaseColor", liquidColor);
 
+        }
+
+        public void EmptyRender() {
+            _drinkMaterial.DOKill();
+            _drinkMaterial.DOFloat(_fillPercs[0], "_FillPerc", 5);
         }
 
         public Color GetColor()

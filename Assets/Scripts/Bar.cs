@@ -94,6 +94,7 @@ namespace ggj.rootbeer
             Drink.Instance.Syrup = null;
             Drink.Instance.Topping = null;
             Drink.Instance.FlavorProfile = null;
+            Drink.Instance.EmptyRender();
             _drinkFlavorTooltip.ClearProfile();
             _serverButtonGO.SetActive(false);
         }
