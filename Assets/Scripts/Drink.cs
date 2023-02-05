@@ -58,12 +58,12 @@ namespace ggj.rootbeer
             // Set the height of the drink
             if (Juice != null && Syrup != null) {
                 _drinkMaterial.DOFloat(_fillPercs[2], "_FillPerc", 1);
-                _planeTransform.localPosition = Vector3.up;
+                _planeTransform.localPosition = Vector3.up* 0.9f;
                 _icePlaneTransform.localPosition = Vector3.up;
             }
             else if (Juice != null || Syrup != null) {
                 _drinkMaterial.DOFloat(_fillPercs[1], "_FillPerc", 1);
-                _planeTransform.localPosition = Vector3.up * 0.55f;
+                _planeTransform.localPosition = Vector3.up * 0.45f;
                 _icePlaneTransform.localPosition = Vector3.up * 0.55f;
             }
             else {

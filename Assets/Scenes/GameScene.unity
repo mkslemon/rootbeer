@@ -1329,15 +1329,15 @@ PrefabInstance:
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: _toppingMaterials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6a2bf9d8708efba478528fadd8da1546, type: 2}
+      objectReference: {fileID: 2100000, guid: cb0cd47bbe28f4738afde52fdefff29a, type: 2}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: _toppingMaterials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: d95c3f4ab0e286d42a19d4f1f7cb92c3, type: 2}
+      objectReference: {fileID: 2100000, guid: 8eb4db10127634a81861e0af096c5f6a, type: 2}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: _toppingMaterials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 008ef6b4e7b4d324aaec54c7b68a9d2f, type: 2}
+      objectReference: {fileID: 2100000, guid: 5fc21661c1c6b4d5baba016ae2c89626, type: 2}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: patronEntryAnimOrigin.Array.size
       value: 2
@@ -12661,8 +12661,8 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
-  m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MinParticleSize: 1
+  m_MaxParticleSize: 1.25
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
