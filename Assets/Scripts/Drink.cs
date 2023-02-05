@@ -8,6 +8,9 @@ namespace ggj.rootbeer
     {
         public static Drink Instance;
 
+        public List<Sprite> _baseSprites;
+        public List<Sprite> _drinkSprites;
+
         public FlavorProfile FlavorProfile;
         // Drink parts
         public Juice Juice;
@@ -38,7 +41,36 @@ namespace ggj.rootbeer
         //}
 
         public void UpdateRender() {
-            // TODO
+            if (Juice != null && Topping != null) {
+                int spriteIdx = 0;
+                if (Juice.Name.Equals("Root Beer"))
+                    spriteIdx += 0;
+                else if (Juice.Name.Equals("Ginger Ale"))
+                    spriteIdx += 3;
+                else if (Juice.Name.Equals("Sparkling OJ"))
+                    spriteIdx += 6;
+
+                if (Topping.Name.Equals("Mint"))
+                    spriteIdx += 0;
+                else if (Topping.Name.Equals("Cherry"))
+                    spriteIdx += 1;
+                else if (Topping.Name.Equals("Lime"))
+                    spriteIdx += 2;
+
+                GetComponent<SpriteRenderer>().sprite = _drinkSprites[spriteIdx];
+            }
+            else if (Juice != null) {
+                int spriteIdx = 0;
+                if (Juice.Name.Equals("Root Beer"))
+                    spriteIdx = 0;
+                else if (Juice.Name.Equals("Ginger Ale"))
+                    spriteIdx = 1;
+                else if (Juice.Name.Equals("Sparkling OJ"))
+                    spriteIdx = 2;
+
+
+                GetComponent<SpriteRenderer>().sprite = _baseSprites[spriteIdx];
+            }
         }
 
         public Color GetColor()
