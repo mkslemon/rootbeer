@@ -20,6 +20,8 @@ namespace ggj.rootbeer {
         private Vector3 _positionOffset;
         private Vector3 _mousePositionWorld;
 
+        private readonly Vector2 TOOLTIP_OFFSET = new Vector2(75f, 75f);
+
         private FlavorProfile _flavorProfile;
 
         #region Unity
@@ -90,24 +92,24 @@ namespace ggj.rootbeer {
 
         #region Mouse controls
         private void OnMouseEnter() {
-            ActiveInstance = this;
+            if (!_dragging) {
+                ActiveInstance = this;
 
-            if (!_mouseInside) {
-                _mouseInside = true;
+                if (!_mouseInside) {
+                    _mouseInside = true;
 
-                _flavorTooltip.SetFlavorProfile(_flavorProfile);
+                    _flavorTooltip.SetFlavorProfile(_flavorProfile);
 
-                // set the _flavorTooltip position to the screen position
-                Vector3 screenPosition = Input.mousePosition;
-                screenPosition.z = _flavorTooltip.gameObject.transform.position.z;
-                screenPosition.x += 75f;
-                screenPosition.y += 75f;
-                _flavorTooltip.gameObject.transform.position = screenPosition;
+                    // set the _flavorTooltip position to the screen position
+                    Vector3 ingredientScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+                    ingredientScreenPosition += new Vector3(TOOLTIP_OFFSET.x, TOOLTIP_OFFSET.y, _flavorTooltip.gameObject.transform.position.z);
+                    _flavorTooltip.gameObject.transform.position = ingredientScreenPosition;
 
-                // Fade in the object
-                _flavorTooltip.gameObject.SetActive(true);
-                _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
-                _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
+                    // Fade in the object
+                    _flavorTooltip.gameObject.SetActive(true);
+                    _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
+                    _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
+                }
             }
         }
 
