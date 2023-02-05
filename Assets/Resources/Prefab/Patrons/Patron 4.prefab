@@ -308,7 +308,7 @@ MonoBehaviour:
   flavorCitrus: 0
   flavorFloral: 1
   flavorSweet: 1
-  flavorExotic: 0.5
+  flavorExotic: 0
   firstImpression: 0
   closeEmoji: 0
   mediumEmoji: 0
