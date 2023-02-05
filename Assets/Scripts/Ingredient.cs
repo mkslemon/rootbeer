@@ -99,31 +99,29 @@ namespace ggj.rootbeer {
             // Check if we're inside of the cup
             if (transform.position.x > -1f && transform.position.x < 1f && transform.position.y > -1.25f && transform.position.y < 1f)
             {
+                if (_mouseInsideCup == false) {
+                    // we're within the cup boundary
+                    _mouseInsideCup = true;
 
-                // we're within the cup boundary
-                _mouseInsideCup = true;
+                    if (_juice != null)
+                        Bar.Instance.SetJuice(_juice, this);
+                    else if (_syrup != null)
+                        Bar.Instance.SetSyrup(_syrup, this);
+                    else if (_topping != null)
+                        Bar.Instance.SetTopping(_topping, this);
 
-                if (_juice != null)
-                    Bar.Instance.SetJuice(_juice, this);
-                else if (_syrup != null)
-                    Bar.Instance.SetSyrup(_syrup, this);
-                else if (_topping != null)
-                    Bar.Instance.SetTopping(_topping, this);
-
-                Select();
+                    Select();
+                }
             }
             else
             {
                 if (_mouseInsideCup) {
                     _mouseInsideCup = false;
 
-                    Bar.Instance.CancelNewMix();
-
                     // If we *were* in the cup boundary but we dragged out
                     // then the user wants us not to use this ingredient, so revert
                     // back to the previous ingredients
-
-                    Debug.Log("De-select and revert ingredients in bar");
+                    Bar.Instance.CancelNewMix();
                 }
             }
 

@@ -19,8 +19,8 @@ namespace ggj.rootbeer
 
         private const float TOPPING_WEIGHT = 1f;
 
-        private List<FlavorProfile> _currentFlavorProfiles;
-        private List<FlavorProfile> _prevFlavorProfiles;
+        private List<FlavorProfile> _currentFlavorProfiles = new List<FlavorProfile>();
+        private List<FlavorProfile> _prevFlavorProfiles = new List<FlavorProfile>();
 
         private Ingredient[] _ingredients = new Ingredient[3];
         private Ingredient[] _prevIngredients;
