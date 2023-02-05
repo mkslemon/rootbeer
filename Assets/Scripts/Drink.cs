@@ -79,27 +79,28 @@ namespace ggj.rootbeer
             // some examples altered from here: https://stackoverflow.com/questions/1351442/is-there-an-algorithm-for-color-mixing-that-works-like-mixing-real-colors
             Color returnColor = Color.black;
             int blendMode = 0;
+            Color[] colors = new Color[] { Juice.Color, Syrup.Color };
 
-            //switch(blendMode)
-            //{
-            //    case 1:
-            //        // simple subtractive?
-            //        returnColor = Syrups.Select(sel => sel.Color).
-            //            Aggregate((c1, c2) => new Color(c1.r * c2.r, c1.g * c2.g, c1.b * c2.g));
-            //        break;
-            //    case 2:
-            //        // dilute subtractive?
-            //        returnColor.r = 1 - Mathf.Sqrt(Syrups.Select(sel => Mathf.Pow(1 - sel.Color.r, 2)).Average());
-            //        returnColor.g = 1 - Mathf.Sqrt(Syrups.Select(sel => Mathf.Pow(1 - sel.Color.g, 2)).Average());
-            //        returnColor.b = 1 - Mathf.Sqrt(Syrups.Select(sel => Mathf.Pow(1 - sel.Color.b, 2)).Average());
-            //        break;
-            //    default:
-            //        // basic average
-            //        returnColor.r = Syrups.Select(sel => sel.Color.r).Average();
-            //        returnColor.g = Syrups.Select(sel => sel.Color.g).Average();
-            //        returnColor.b = Syrups.Select(sel => sel.Color.b).Average();
-            //        break;
-            //}
+            switch(blendMode)
+            {
+                case 1:
+                    // simple subtractive?
+                    returnColor = colors.
+                        Aggregate((c1, c2) => new Color(c1.r * c2.r, c1.g * c2.g, c1.b * c2.g));
+                    break;
+                case 2:
+                    // dilute subtractive?
+                    returnColor.r = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.r, 2)).Average());
+                    returnColor.g = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.g, 2)).Average());
+                    returnColor.b = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.b, 2)).Average());
+                    break;
+                default:
+                    // basic average
+                    returnColor.r = colors.Select(sel => sel.r).Average();
+                    returnColor.g = colors.Select(sel => sel.g).Average();
+                    returnColor.b = colors.Select(sel => sel.b).Average();
+                    break;
+            }
             return returnColor;
         }
 
