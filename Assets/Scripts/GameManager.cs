@@ -46,17 +46,17 @@ namespace ggj.rootbeer
             _GAMEMANAGER = this;
             activePatrons = new Patron[2];
 
-            _ingredients[0]._juice = new Juice("Sassafras Juice", _ingredientColors[0], "", new FlavorProfile(0f, 0f, 1f, 1f));
-            _ingredients[1]._juice = new Juice("Ginger Juice", _ingredientColors[1], "", new FlavorProfile(0f, 1f, 0f, 1f));
+            _ingredients[0]._juice = new Juice("Sassafras Juice", _ingredientColors[0], "", new FlavorProfile(0f, 1f, 0f, 1f));
+            _ingredients[1]._juice = new Juice("Ginger Juice", _ingredientColors[1], "", new FlavorProfile(1f, 1f, 0f, 0f));
             _ingredients[2]._juice = new Juice("Orange Juice", _ingredientColors[2], "", new FlavorProfile(1f, 0f, 1f, 0f));
 
-            _ingredients[3]._syrup = new Syrup("Grenadine Syrup", _ingredientColors[3], "", new FlavorProfile(0f, 1f, 1f, 0f));
-            _ingredients[4]._syrup = new Syrup("Coconut Creamer", _ingredientColors[4], "", new FlavorProfile(1f, 0f, 1f, 0f));
-            _ingredients[5]._syrup = new Syrup("Blueberry Syrup", _ingredientColors[5], "", new FlavorProfile(0f, 1f, 0f, 1f));
+            _ingredients[3]._syrup = new Syrup("Grenadine Syrup", _ingredientColors[3], "", new FlavorProfile(0f, 0f, 1f, 0f));
+            _ingredients[4]._syrup = new Syrup("Coconut Creamer", _ingredientColors[4], "", new FlavorProfile(0f, 0f, 0f, 1f));
+            _ingredients[5]._syrup = new Syrup("Blueberry Syrup", _ingredientColors[5], "", new FlavorProfile(0f, 1f, 0f, 0f));
 
-            _ingredients[6]._topping = new Topping("Mint Garnish", _toppingMaterials[0], "", new FlavorProfile(0f, 1f, 0f, 1f));
-            _ingredients[7]._topping = new Topping("Cherry Garnish", _toppingMaterials[1], "", new FlavorProfile(1f, 0f, 1f, 0f));
-            _ingredients[8]._topping = new Topping("Lime Garnish", _toppingMaterials[2], "", new FlavorProfile(1f, 0f, 0f, 1f));
+            _ingredients[6]._topping = new Topping("Mint Garnish", _toppingMaterials[0], "", new FlavorProfile(0f, 0.5f, 0.5f, 0.5f));
+            _ingredients[7]._topping = new Topping("Cherry Garnish", _toppingMaterials[1], "", new FlavorProfile(0.5f, 0.5f, 0.5f, 0f));
+            _ingredients[8]._topping = new Topping("Lime Garnish", _toppingMaterials[2], "", new FlavorProfile(0.5f, 0f, 0f, 0.5f));
         }
 
 
