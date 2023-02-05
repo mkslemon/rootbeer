@@ -93,21 +93,9 @@ namespace ggj.rootbeer
         }
 
         public static FlavorProfile GetAverages(IEnumerable<FlavorProfile> flavorProfiles) {
-            (float sweet, float sour, float salty, float bitter) values = (0f, 0f, 0f, 0f);
-
-            foreach (FlavorProfile flavorProfile in flavorProfiles) {
-                values.sweet += flavorProfile.Citrus;
-                values.sour += flavorProfile.Floral;
-                values.salty += flavorProfile.Sweet;
-                values.bitter += flavorProfile.Exotic;
-            }
-
-            values.sweet /= flavorProfiles.Count();
-            values.sour /= flavorProfiles.Count();
-            values.salty /= flavorProfiles.Count();
-            values.bitter /= flavorProfiles.Count();
-
-            return new FlavorProfile(values.sweet, values.sour, values.salty, values.bitter);
-        } 
+            List<float[]> flavorArrays = flavorProfiles.Select(sel => sel.GetAsArray()).ToList();
+            var AverageFlavor = Enumerable.Range(1, flavorArrays[0].Length).Select(i => flavorArrays.Select(flavor => flavor[i]).Sum() / flavorArrays.Count).ToArray();
+            return new FlavorProfile(AverageFlavor);
+        }
     }
 }
