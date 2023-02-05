@@ -393,9 +393,9 @@ MonoBehaviour:
   emojiBubble: {fileID: 0}
   satisfied: 0
   toBeReplaced: 0
-  flavorCitrus: 0
-  flavorFloral: 0.5
-  flavorSweet: 0.9
+  flavorCitrus: 0.7
+  flavorFloral: 0
+  flavorSweet: 0.7
   flavorExotic: 0
   firstImpression: {fileID: -1910167470, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
   closeEmoji: {fileID: 437942627, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}

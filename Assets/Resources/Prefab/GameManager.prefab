@@ -56,8 +56,8 @@ MonoBehaviour:
   Patrons:
   - {fileID: 4646893017187543251, guid: 1e0b9b4807b5a439e87cb83700e028eb, type: 3}
   - {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
-  - {fileID: 4646893017187543251, guid: 1e0b9b4807b5a439e87cb83700e028eb, type: 3}
-  - {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
+  - {fileID: 4646893017187543251, guid: 5e9ef3bf7af167e4e8d578f1d55f9bca, type: 3}
+  - {fileID: 4646893017187543251, guid: 9feecc544b1aeb64fb119fee5036ed67, type: 3}
   patronOrigins:
   - {fileID: 0}
   - {fileID: 0}
@@ -74,6 +74,13 @@ MonoBehaviour:
   - {fileID: 0}
   triesLeftText: {fileID: 0}
   winBlurb: {fileID: 0}
+  helpBlurb: {fileID: 0}
+  heartsLeft:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _ingredients:
   - {fileID: 0}
   - {fileID: 0}
@@ -84,3 +91,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _ingredientColors:
+  - {r: 0.46226418, g: 0.30454198, b: 0.11120505, a: 0}
+  - {r: 0.8301887, g: 0.7780704, b: 0.26237094, a: 0}
+  - {r: 0.9433962, g: 0.6024862, b: 0.13794944, a: 0}
+  - {r: 0.7960785, g: 0.27058825, b: 0.22352943, a: 0}
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0.21026169, g: 0.22018091, b: 0.990566, a: 0}
+  _toppingSprites: []
