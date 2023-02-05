@@ -14,6 +14,13 @@ namespace ggj.rootbeer
         public SpriteRenderer overlayLimbs;
         [HideInInspector]public EmojiBubble emojiBubble;
 
+        [Header("Likes/Dislikes")]
+        public float flavorCitrus = .5f;
+        public float flavorFloral = .5f;
+        public float flavorSweet = .5f;
+        public float flavorExotic = .5f;
+
+
         [Header("Emojis")]
         public Emojimotion firstImpression;
         public Emojimotion closeEmoji;
@@ -33,7 +40,7 @@ namespace ggj.rootbeer
         {
             if (FlavorProfile == null)
             {
-                FlavorProfile = new FlavorProfile();
+                FlavorProfile = new FlavorProfile(flavorCitrus, flavorFloral, flavorSweet, flavorExotic);
             }
             if (PreferredToppings == null)
             {
@@ -67,13 +74,13 @@ namespace ggj.rootbeer
         public float Score(Drink d)
         {
 
-            return 0;
+            return FlavorProfile.GetDistance(d.FlavorProfile);
         }
 
         public void Scooch(float score, Vector3 furthestPoint, Vector3 targetPoint)
         {
             Sequence sequence = DOTween.Sequence();
-            transform.DOMove(Vector3.Lerp(furthestPoint, targetPoint, score), 2f).SetEase(Ease.OutElastic);
+            transform.DOMove(Vector3.Lerp(furthestPoint, targetPoint, score), 2f).SetEase(Ease.OutSine);
         }
 
         public void EnterSeat(Vector3 target, float delay)
@@ -84,6 +91,14 @@ namespace ggj.rootbeer
             sequence.InsertCallback(1.3f, () => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 10; }});
             sequence.AppendInterval(.2f);
             sequence.Append(popEmoji(firstImpression));
+        }
+
+        public void ExitSeat(float delay)
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.AppendInterval(delay + .5f);
+            sequence.Append(transform.DOMoveY(-10, 1f).SetEase(Ease.InQuad));
+            sequence.InsertCallback(1.5f, () => Destroy(gameObject));
         }
 
         public Sequence popEmoji(Emojimotion emote)

@@ -16,10 +16,10 @@ public class FlavorTooltip : MonoBehaviour
     public void SetFlavorProfile(FlavorProfile flavorProfile) {
         _flavorProfile = flavorProfile;
 
-        _flavorSliders[0].fillAmount = _flavorProfile.Sweet;
-        _flavorSliders[1].fillAmount = _flavorProfile.Sour;
-        _flavorSliders[2].fillAmount = _flavorProfile.Salty;
-        _flavorSliders[3].fillAmount = _flavorProfile.Bitter;
+        _flavorSliders[0].fillAmount = _flavorProfile.Citrus;
+        _flavorSliders[1].fillAmount = _flavorProfile.Floral;
+        _flavorSliders[2].fillAmount = _flavorProfile.Sweet;
+        _flavorSliders[3].fillAmount = _flavorProfile.Exotic;
     }
 
     public void ClearProfile() {

@@ -43,7 +43,7 @@ public class EmojiBubble : MonoBehaviour
         
         Sequence sq = DOTween.Sequence();
         this.gameObject.SetActive(true);
-        canvasGroup.alpha = 0;
+        
         sq.AppendCallback(() =>
         {
             emoji.sprite = emojiIcons[(int)emote];
@@ -62,7 +62,7 @@ public class EmojiBubble : MonoBehaviour
     {
         Sequence sq = DOTween.Sequence();
         sq.Append(canvasGroup.DOFade(0, .4f));
-        sq.Insert(sq.Duration() - 0.2f, emoji.DOFade(0, .4f));
+        sq.Insert(0.2f, emoji.DOFade(0, .4f));
         return sq;
     }
 
@@ -72,7 +72,7 @@ public class EmojiBubble : MonoBehaviour
         sq.Append(fadeEmoji());
         sq.AppendInterval(.3f);
         sq.Append(popEmoji(emote));
-        sq.AppendInterval(3f);
+        sq.AppendInterval(2f);
         sq.Append(fadeEmoji());
         sq.Append(popEmoji(emote2));
         return sq;

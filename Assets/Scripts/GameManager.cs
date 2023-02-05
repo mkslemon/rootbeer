@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 namespace ggj.rootbeer
 {
     public class GameManager : MonoBehaviour
@@ -20,11 +21,13 @@ namespace ggj.rootbeer
         [HideInInspector] public Patron[] activePatrons =  new Patron[2];
         public Patron[] Patrons;
         public Transform[] patronOrigins;
+        public Transform[] endTargets;
         private FlavorProfile targetFlavorProfile;
         public float PatronStartingDistanceToTarget;
         public Transform[] patronEntryAnimOrigin;
         public Transform charactersGrouping;
         public EmojiBubble[] emojiBubbles;
+        public TMPro.TextMeshProUGUI triesLeftText;
 
         int currentLevel=0;
 
@@ -57,17 +60,18 @@ namespace ggj.rootbeer
             //do we need to reject a served drink because player forgot something in it?
 
             //process the submission
-            triesLeft--;
+            triesLeft--;;
+            triesLeftText.text = triesLeft + " Tries Left!";
             //for each patron, compare the served drinks then see how they react
-            for(int p= 0; p<activePatrons.Length; p++)
+            for (int p= 0; p<activePatrons.Length; p++)
             {
                 //compare to preferences to generate a score (0 to 1.0)
                 scores[p] = activePatrons[p].Score(Drink.Instance);
-                Debug.Log((scores[0], scores[1]));
+                Debug.Log("patron " +p+ " scores " + (scores[p]));
 
                 //move the patron closer to the drink if liked or closer to their origin point if disliked
                 //pass a float 0 to 1.0 along with 
-                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, Drink.Instance.transform.position);
+                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, endTargets[p].transform.position);
                 //
                 if (scores[p] >= happyZone)
                 {
@@ -97,7 +101,7 @@ namespace ggj.rootbeer
 
             bool levelOver = false;
             //check if scores are close enough
-            if (scores[0]-scores[1]< requiredScoreDistanceForWinEnding)
+            if ((1-scores[0])+(1-scores[1])< requiredScoreDistanceForWinEnding)
             {
                 levelOver = true;
                 //characters are close enough to win
@@ -112,7 +116,7 @@ namespace ggj.rootbeer
             else if (triesLeft <= 0)
             {
                 levelOver = true;
-                if (scores[0] - scores[1] < requiredScoreDistanceForOkayEnding)
+                if ((1 - scores[0]) + (1 - scores[1]) < requiredScoreDistanceForOkayEnding)
                 {
                     //out of tries and we made it to okay ending territory
                     foreach (Patron p in activePatrons)
@@ -189,7 +193,7 @@ namespace ggj.rootbeer
             {
                 if (activePatrons[i] != null)
                 {
-                    Destroy(activePatrons[i]);
+                    activePatrons[i].ExitSeat(0);
                 }
                 activePatrons[i] = Instantiate(Patrons[(currentLevel*2)+i], patronEntryAnimOrigin[i].position, Quaternion.identity);
                 activePatrons[i].emojiBubble = emojiBubbles[i];
@@ -199,10 +203,10 @@ namespace ggj.rootbeer
 
             }
 
-            UpdateTargetFlavorProfile();
-            GetStartingDistance(targetFlavorProfile);
+            //UpdateTargetFlavorProfile();
+            //GetStartingDistance(targetFlavorProfile);
             triesLeft = numberTries;
-            
+            triesLeftText.text = triesLeft + " Tries Left!";
 
         }
 

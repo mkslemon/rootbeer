@@ -7,17 +7,17 @@ namespace ggj.rootbeer
     [System.Serializable]
     public class FlavorProfile
     {
+        public float Citrus { get; set; }
+        public float Floral { get; set; }
         public float Sweet { get; set; }
-        public float Sour { get; set; }
-        public float Salty { get; set; }
-        public float Bitter { get; set; }
+        public float Exotic { get; set; }
 
-        public FlavorProfile(float sweet = 0f, float sour = 0f, float salty = 0f, float bitter = 0f)
+        public FlavorProfile(float citrus = 0f, float floral = 0f, float sweet = 0f, float exotic = 0f)
         {
+            Citrus = citrus;
+            Floral = floral;
             Sweet = sweet;
-            Sour = sour;
-            Salty = salty;
-            Bitter = bitter;
+            Exotic = exotic;
         }
         public FlavorProfile(float[] x)
         {
@@ -28,23 +28,23 @@ namespace ggj.rootbeer
             {
                 throw new System.IndexOutOfRangeException("Incorrect number of tastes found in Flavor Profile. Expected: " + expectedLength + " Found: " + x.Length); // should only be possible if there is an issue with this code. Should instead be a unit test.
             }
-            Sweet = x[0];
-            Sour = x[1];
-            Salty = x[2];
-            Bitter = x[3];
+            Citrus = x[0];
+            Floral = x[1];
+            Sweet = x[2];
+            Exotic = x[3];
         }
 
         public void GenerateRandomProfile()
         {
             // consider distribution other than uniform for certain tastes
+            Citrus = Random.value;
+            Floral = Random.value;
             Sweet = Random.value;
-            Sour = Random.value;
-            Salty = Random.value;
-            Bitter = Random.value;
+            Exotic = Random.value;
         }
         public float[] GetAsArray()
         {
-            return new float[] { Sweet, Sour, Salty, Bitter };
+            return new float[] { Citrus, Floral, Sweet, Exotic };
         }
 
         public FlavorProfile GetAverage(FlavorProfile other)
@@ -69,10 +69,10 @@ namespace ggj.rootbeer
             (float sweet, float sour, float salty, float bitter) values = (0f, 0f, 0f, 0f);
 
             foreach (FlavorProfile flavorProfile in flavorProfiles) {
-                values.sweet += flavorProfile.Sweet;
-                values.sour += flavorProfile.Sour;
-                values.salty += flavorProfile.Salty;
-                values.bitter += flavorProfile.Bitter;
+                values.sweet += flavorProfile.Citrus;
+                values.sour += flavorProfile.Floral;
+                values.salty += flavorProfile.Sweet;
+                values.bitter += flavorProfile.Exotic;
             }
 
             values.sweet /= flavorProfiles.Count();
