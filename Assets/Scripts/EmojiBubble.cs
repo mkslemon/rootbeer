@@ -14,9 +14,11 @@ public class EmojiBubble : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
     public Image emoji;
-    public Image rockingBubble;
+    public Transform rockingBubble;
+    public Image bubble;
+    public Image reverseBubble;
     public Sprite[] emojiIcons;
-
+    [HideInInspector] public bool isReversed;
     
 
 
@@ -38,11 +40,25 @@ public class EmojiBubble : MonoBehaviour
         
     }
 
+    public void Reversed(bool reversed)
+    {
+        isReversed = reversed;
+        if (reversed) {
+            bubble.gameObject.SetActive(false);
+            reverseBubble.gameObject.SetActive(true);
+        }
+        else
+        {
+            bubble.gameObject.SetActive(true);
+            reverseBubble.gameObject.SetActive(false);
+        }
+
+    }
+
     public Sequence popEmoji(Emojimotion emote)
     {
         
         Sequence sq = DOTween.Sequence();
-        this.gameObject.SetActive(true);
         
         sq.AppendCallback(() =>
         {
@@ -60,6 +76,9 @@ public class EmojiBubble : MonoBehaviour
 
     public Sequence fadeEmoji()
     {
+        
+        DOTween.Complete(emoji);
+        DOTween.Complete(canvasGroup);
         Sequence sq = DOTween.Sequence();
         sq.Append(canvasGroup.DOFade(0, .4f));
         sq.Insert(0.2f, emoji.DOFade(0, .4f));

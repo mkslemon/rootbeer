@@ -12,13 +12,18 @@ public class SoundManager : MonoBehaviour
     public AudioSource pickupIngredient;
     public AudioSource dropIngredient;
     public AudioSource addIngredient;
-    public AudioSource drinkingSound;
+    public List<AudioSource> drinkingSound;
     public AudioSource strawsPopin;
-    public AudioSource characterMoves;
+    public List<AudioSource> characterMoves;
     public AudioSource characterMovesSlow;
     public AudioSource characterMovesFast;
 
 
+    public AudioSource pickRandom(List<AudioSource> audioSources)
+    {
+        return audioSources[Random.Range(0, audioSources.Count)];
+
+    }
 
     // Start is called before the first frame update
     void Start()

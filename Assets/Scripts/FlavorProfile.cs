@@ -76,7 +76,7 @@ namespace ggj.rootbeer
         
         public override string ToString()
         {
-            return "Citrus: " + Citrus + ", Floral: " + Floral + ", Sweet: " + Sweet + "Exotic: " + Exotic;
+            return "Citrus: " + Citrus + ", Floral: " + Floral + ", Sweet: " + Sweet + ", Exotic: " + Exotic;
         }
 
         //https://stackoverflow.com/questions/7560760/cosine-similarity-code-non-term-vectors idk what this does, but it's supposedly cosin similarity :V

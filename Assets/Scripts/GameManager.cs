@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace ggj.rootbeer
         [Header("Game Tuning")]
         public int numberTries;
         [HideInInspector] public int triesLeft;
-        public float requiredScoreDistanceForWinEnding = 0.1f;
+        public float requiredScoreDistanceForWinEnding = 0.3f;
         public float requiredScoreDistanceForOkayEnding = 0.6f;
         public float happyZone = .7f;
         public float mediumZone = .4f;
@@ -28,6 +29,7 @@ namespace ggj.rootbeer
         public Transform charactersGrouping;
         public EmojiBubble[] emojiBubbles;
         public TMPro.TextMeshProUGUI triesLeftText;
+        public CanvasGroup winBlurb;
 
         int currentLevel=0;
 
@@ -61,7 +63,7 @@ namespace ggj.rootbeer
 
             //process the submission
             triesLeft--;;
-            triesLeftText.text = triesLeft + " Tries Left!";
+            updateTriesString();
             //for each patron, compare the served drinks then see how they react
             for (int p= 0; p<activePatrons.Length; p++)
             {
@@ -110,6 +112,11 @@ namespace ggj.rootbeer
                 {
                     p.popEmoji(p.closestEnd);
                 }
+                Sequence sq = DOTween.Sequence();
+                sq.AppendInterval(3f);
+                sq.Append(winBlurb.DOFade(1, .4f));
+                sq.AppendInterval(.4f);
+                sq.Append(winBlurb.DOFade(0, .4f));
 
             }
             //are we out of tries?
@@ -139,15 +146,19 @@ namespace ggj.rootbeer
             if (levelOver)
             {
                 currentLevel++;
-                if (Patrons.Length > (currentLevel+1 * 2))
+                foreach (Patron p in activePatrons)
                 {
-                    //todo show fanfare
-
-
-                    ShowNextCharacters();
-
+                    //p.ExitSeat(0);
+                    p.satisfied = true;
+                    //they'll exit their seats after their anim
+                    if (Patrons.Length > (currentLevel + 1 * 2))
+                    {
+                        p.toBeReplaced = true;
+                    }
                 }
-                else
+                
+                
+                if(Patrons.Length <= (currentLevel + 1 * 2))
                 {//the game is over
 
                     //todo show fanfare
@@ -176,7 +187,7 @@ namespace ggj.rootbeer
         // Start is called before the first frame update
         void Start()
         {
-            ShowNextCharacters();
+            TryShowNextCharacters();
         }
 
         // Update is called once per frame
@@ -187,29 +198,52 @@ namespace ggj.rootbeer
 
 
         //take a dependency tht there are 2+ charas and an even number
-        void ShowNextCharacters()
+        public void TryShowNextCharacters()
         {
             for(int i=0; i<2; i++)
             {
                 if (activePatrons[i] != null)
                 {
-                    activePatrons[i].ExitSeat(0);
+                    continue;
+                    
                 }
-                activePatrons[i] = Instantiate(Patrons[(currentLevel*2)+i], patronEntryAnimOrigin[i].position, Quaternion.identity);
-                activePatrons[i].emojiBubble = emojiBubbles[i];
-                activePatrons[i].EnterSeat(patronOrigins[i].transform.position, i*.3f);
-                activePatrons[i].transform.SetParent(charactersGrouping);
-                
-
+                else
+                {
+                    activePatrons[i] = Instantiate(Patrons[(currentLevel * 2) + i], patronEntryAnimOrigin[i].position, Quaternion.identity);
+                    activePatrons[i].anchorBubble(emojiBubbles[i]);
+                    activePatrons[i].EnterSeat(patronOrigins[i].transform.position, i * .3f);
+                    activePatrons[i].transform.SetParent(charactersGrouping);
+                }
             }
 
             //UpdateTargetFlavorProfile();
             //GetStartingDistance(targetFlavorProfile);
             triesLeft = numberTries;
-            triesLeftText.text = triesLeft + " Tries Left!";
+            updateTriesString();
 
         }
 
+
+
+        void updateTriesString()
+        {
+            string chancesString = "";
+            for (int i = 0; i < numberTries; i++)
+            {
+                chancesString += "[";
+                if (i < (numberTries-triesLeft))
+                {
+                    chancesString += "x";
+                }
+                else
+                {
+                    chancesString += " ";
+                }
+                chancesString += "]";
+            }
+
+            triesLeftText.text = chancesString;
+        }
         #region Drinks
 
         public void NewDrink() {
