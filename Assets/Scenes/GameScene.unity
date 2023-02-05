@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: Patrons.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: charactersGrouping
@@ -760,9 +760,17 @@ PrefabInstance:
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: Patrons.Array.data[0]
       value: 
-      objectReference: {fileID: 4646893017187543251, guid: f8c086ca388ac402785dedaf4cf08aac, type: 3}
+      objectReference: {fileID: 4646893017187543251, guid: 1e0b9b4807b5a439e87cb83700e028eb, type: 3}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: Patrons.Array.data[1]
+      value: 
+      objectReference: {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
+    - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
+      propertyPath: Patrons.Array.data[2]
+      value: 
+      objectReference: {fileID: 4646893017187543251, guid: 9701ab726db144eb5a0ae0624ee5d10d, type: 3}
+    - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
+      propertyPath: Patrons.Array.data[3]
       value: 
       objectReference: {fileID: 4646893017187543251, guid: 9701ab726db144eb5a0ae0624ee5d10d, type: 3}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
@@ -1721,6 +1729,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 19.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8979334449793602652, guid: acf2c8cc7c654416fb266b756decfa81, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8885ace00094b4cd5a05579de6d3d6e2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acf2c8cc7c654416fb266b756decfa81, type: 3}
 --- !u!1 &1542124591 stripped
@@ -2911,34 +2923,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3566154563217399429, guid: acf2c8cc7c654416fb266b756decfa81, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: acf2c8cc7c654416fb266b756decfa81, type: 3}
---- !u!1 &8053997521130330088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5930599702506387951, guid: acf2c8cc7c654416fb266b756decfa81, type: 3}
-  m_PrefabInstance: {fileID: 8053997521130330087}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8053997521130330089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8053997521130330088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23538bdac6db4a9dbd19d94b9c806b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
-  emoji: {fileID: 0}
-  emojiIcons: []
 --- !u!114 &8053997521130330092 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3216214286333855053, guid: acf2c8cc7c654416fb266b756decfa81, type: 3}
   m_PrefabInstance: {fileID: 8053997521130330087}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8053997521130330088}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b23538bdac6db4a9dbd19d94b9c806b1, type: 3}

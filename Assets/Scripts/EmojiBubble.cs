@@ -14,6 +14,7 @@ public class EmojiBubble : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
     public Image emoji;
+    public Image rockingBubble;
     public Sprite[] emojiIcons;
 
     
@@ -23,6 +24,12 @@ public class EmojiBubble : MonoBehaviour
     void Start()
     {
         
+        Sequence sq = DOTween.Sequence();
+        sq.Append(rockingBubble.transform.DORotate(new Vector3(0, 0, 5.0f), 5f));
+        sq.AppendInterval(.1f);
+        sq.Append(rockingBubble.transform.DORotate(new Vector3(0, 0, -5.0f), 5f));
+        sq.AppendInterval(.1f);
+        sq.SetLoops(-1);
     }
 
     // Update is called once per frame

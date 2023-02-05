@@ -11,6 +11,7 @@ namespace ggj.rootbeer
         public List<ToppingName> PreferredToppings;
         public List<ToppingName> HatedToppings;
         public Transform speakingAnchor;
+        public SpriteRenderer overlayLimbs;
         [HideInInspector]public EmojiBubble emojiBubble;
 
         [Header("Emojis")]
@@ -80,6 +81,7 @@ namespace ggj.rootbeer
             Sequence sequence = DOTween.Sequence();
             sequence.AppendInterval(delay + .5f);
             sequence.Append(transform.DOMove(target, 1f).SetEase(Ease.OutBack));
+            sequence.InsertCallback(1.3f, () => { if (overlayLimbs != null) { overlayLimbs.sortingOrder = 10; }});
             sequence.AppendInterval(.2f);
             sequence.Append(popEmoji(firstImpression));
         }
