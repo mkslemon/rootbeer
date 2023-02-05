@@ -1059,7 +1059,7 @@ PrefabInstance:
       objectReference: {fileID: 1986820259}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: Patrons.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: charactersGrouping
@@ -1081,6 +1081,14 @@ PrefabInstance:
       propertyPath: Patrons.Array.data[3]
       value: 
       objectReference: {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
+    - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
+      propertyPath: Patrons.Array.data[4]
+      value: 
+      objectReference: {fileID: 4646893017187543251, guid: 6fd24aed2500f49faa5f3a90142c0ca7, type: 3}
+    - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
+      propertyPath: Patrons.Array.data[5]
+      value: 
+      objectReference: {fileID: 4646893017187543251, guid: c8f363c2e51be4b5fbae6da4f3e9cadc, type: 3}
     - target: {fileID: 8229172635752329721, guid: 3b692959380c649a49231ec4dd2f29eb, type: 3}
       propertyPath: endTargets.Array.size
       value: 2
@@ -17677,10 +17685,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986115123038664119, guid: 45f138e6b332c44d1af3e2097ceb6d9f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429538046140567139, guid: 45f138e6b332c44d1af3e2097ceb6d9f, type: 3}
-      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1491834564960375643, guid: 45f138e6b332c44d1af3e2097ceb6d9f, type: 3}

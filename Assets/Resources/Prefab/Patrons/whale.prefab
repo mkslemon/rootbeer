@@ -397,11 +397,11 @@ MonoBehaviour:
   flavorFloral: 0.2
   flavorSweet: 0
   flavorExotic: 0.2
-  firstImpression: {fileID: -1910167470, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  closeEmoji: {fileID: 437942627, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  mediumEmoji: {fileID: 1083134145, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  farEmoji: {fileID: 844546069, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  closestEnd: {fileID: -931982882, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  mediumEnd: {fileID: -892303009, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  farEnd: {fileID: -150963211, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
-  hint: {fileID: 2025538043, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  firstImpression: {fileID: 21300000, guid: a634f0e4b1ca247479f57de788fbc3b1, type: 3}
+  closeEmoji: {fileID: 21300000, guid: 212f3a0a4443f4ed6828e6057e02d9b9, type: 3}
+  mediumEmoji: {fileID: 21300000, guid: a634f0e4b1ca247479f57de788fbc3b1, type: 3}
+  farEmoji: {fileID: 21300000, guid: 79b0e4eceaf71425c8eca23733e618e9, type: 3}
+  closestEnd: {fileID: 21300000, guid: 805aea2da06849742a93f0c9b4fcb162, type: 3}
+  mediumEnd: {fileID: 21300000, guid: 212f3a0a4443f4ed6828e6057e02d9b9, type: 3}
+  farEnd: {fileID: 21300000, guid: 79b0e4eceaf71425c8eca23733e618e9, type: 3}
+  hint: {fileID: 21300000, guid: a634f0e4b1ca247479f57de788fbc3b1, type: 3}
