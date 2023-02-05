@@ -17,7 +17,7 @@ namespace ggj.rootbeer
         [SerializeField] FlavorTooltip _drinkFlavorTooltip;
         [SerializeField] GameObject _serverButtonGO;
 
-        private const float TOPPING_WEIGHT = 0.5f;
+        private const float TOPPING_WEIGHT = 1f;
 
         private List<FlavorProfile> _currentFlavorProfiles;
         private List<FlavorProfile> _prevFlavorProfiles;
