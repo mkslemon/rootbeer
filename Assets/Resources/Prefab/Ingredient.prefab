@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6557385941190904343}
   - component: {fileID: 4877143054030353274}
-  - component: {fileID: 8497697541618436752}
+  - component: {fileID: 1574576533483116034}
+  - component: {fileID: 7286725006851178569}
   m_Layer: 0
   m_Name: Ingredient
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,18 +75,18 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6c0deb5a4ad5b40efbddd6795adb7c6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8497697541618436752
+--- !u!114 &1574576533483116034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7012d9e59ea0645f19a918cbd534d46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &7286725006851178569
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557385941190904342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 3, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
