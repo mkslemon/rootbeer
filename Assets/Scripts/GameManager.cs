@@ -187,7 +187,7 @@ namespace ggj.rootbeer
                     endOfGameGroup.DOFade(1f, 1f).SetDelay(5f);
                     for(int i = wins; i<heartsLeft.Length; i++)
                     {
-                        heartsLeft[i].gameObject.SetActive(false);
+                        winHearts[i].gameObject.SetActive(false);
                     }
                     emitter.SetParameter("Result", 1);
                 }
