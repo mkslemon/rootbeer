@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace ggj.rootbeer {
     public class Ingredient : MonoBehaviour {
@@ -64,6 +65,7 @@ namespace ggj.rootbeer {
 
                 // Handle mouse clicks and dragging/releasing
                 if (Input.GetMouseButtonDown(0)) {
+                    transform.DOKill();
                     _positionOffset = _mousePositionWorld - transform.position;
                     _flavorTooltip.gameObject.SetActive(false);
                     _dragging = true;
@@ -146,7 +148,7 @@ namespace ggj.rootbeer {
             if (!_dragging && ActiveInstance == null) {
                 ActiveInstance = this;
 
-                if (!_mouseInside) {
+                //if (!_mouseInside) {
                     _mouseInside = true;
 
                     _flavorTooltip.SetFlavorProfile(_flavorProfile);
@@ -158,9 +160,10 @@ namespace ggj.rootbeer {
 
                     // Fade in the object
                     _flavorTooltip.gameObject.SetActive(true);
+                    _flavorTooltip.GetComponent<CanvasGroup>().DOKill();
                     _flavorTooltip.GetComponent<CanvasGroup>().alpha = 0f;
                     _flavorTooltip.GetComponent<CanvasGroup>().DOFade(1, 1);
-                }
+                //}
             }
         }
 
