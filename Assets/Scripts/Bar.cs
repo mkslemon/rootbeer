@@ -125,19 +125,19 @@ namespace ggj.rootbeer
             if (Drink.Instance.Syrup != null)
                 _currentFlavorProfiles.Add(Drink.Instance.Syrup.FlavorProfile);
             if (Drink.Instance.Topping != null) {
-                float[] profile = Drink.Instance.Topping.FlavorProfile.GetAsArray();
-                if (_currentFlavorProfiles.Count > 0)
-                {
-                    var currentAverage = FlavorProfile.GetAverages(_currentFlavorProfiles);
-                    var weightedProfile = currentAverage.GetAsArray().Zip(profile, (c, t) => t + (c - t)).ToArray();
+                _currentFlavorProfiles.Add(Drink.Instance.Topping.FlavorProfile);
+                //float[] profile = Drink.Instance.Topping.FlavorProfile.GetAsArray();
+                //if (_currentFlavorProfiles.Count > 0)
+                //{
+                //    var currentAverage = FlavorProfile.GetAverages(_currentFlavorProfiles);
+                //    var weightedProfile = currentAverage.GetAsArray().Zip(profile, (c, t) => t + (c - t)).ToArray();
 
-                    _currentFlavorProfiles.Add(new FlavorProfile(weightedProfile));
-                }
-                else
-                {
-                    _currentFlavorProfiles.Add(new FlavorProfile(profile));
-                }
-                
+                //    _currentFlavorProfiles.Add(new FlavorProfile(weightedProfile));
+                //}
+                //else
+                //{
+                //}
+
             }
         }
 
