@@ -6,11 +6,11 @@ namespace ggj.rootbeer {
         public string Name { get; set; }
         public string Text { get; set; }
         public FlavorProfile FlavorProfile { get; }
-        public Sprite ToppingSprite { get; }
+        public Material ToppingMaterial { get; }
 
-        public Topping(string name, Sprite sprite, string text = "", FlavorProfile flavorProfile = null) {
+        public Topping(string name, Material material, string text = "", FlavorProfile flavorProfile = null) {
             Name = name;
-            ToppingSprite = sprite;
+            ToppingMaterial = material;
             Text = text;
             FlavorProfile = flavorProfile ?? new FlavorProfile();
         }

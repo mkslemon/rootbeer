@@ -20,6 +20,9 @@ namespace ggj.rootbeer
 
         [SerializeField] GameObject _strawGO;
         [SerializeField] private Material _drinkMaterial;
+        [SerializeField] private ParticleSystem _toppingSystem;
+        [SerializeField] private ParticleSystemRenderer _toppingSystemRenderer;
+        [SerializeField] private Transform _planeTransform;
 
         private float[] _fillPercs = { -15, -5, 0 };
 
@@ -27,6 +30,8 @@ namespace ggj.rootbeer
 
         private void Awake() {
             Instance = this;
+            _drinkMaterial.SetFloat("_FillPerc", _fillPercs[0]);
+            _toppingSystem.Clear();
         }
 
         #endregion
@@ -47,14 +52,30 @@ namespace ggj.rootbeer
         public void UpdateRender() {
             _drinkMaterial.DOKill();
 
-            Color liquidColor = GetColor();
-            if (Juice != null && Syrup != null)
-                _drinkMaterial.SetFloat("_FillPerc", _fillPercs[2]);
-            else if (Juice != null || Syrup != null)
-                _drinkMaterial.SetFloat("_FillPerc", _fillPercs[1]);
-            else
+            // Set the height of the drink
+            if (Juice != null && Syrup != null) {
+                _drinkMaterial.DOFloat(_fillPercs[2], "_FillPerc", 1);
+                _planeTransform.localPosition = Vector3.up;
+            }
+            else if (Juice != null || Syrup != null) {
+                _drinkMaterial.DOFloat(_fillPercs[1], "_FillPerc", 1);
+                _planeTransform.localPosition = Vector3.up * 0.55f;
+            }
+            else {
                 _drinkMaterial.SetFloat("_FillPerc", _fillPercs[0]);
+                _planeTransform.localPosition = Vector3.zero;
+            }
+
+            // Set the color by mixing the ingredients
+            Color liquidColor = GetColor();
             _drinkMaterial.SetColor("_BaseColor", liquidColor);
+
+            // Set the topping material and emit a topping particle
+            if (Topping != null) {
+                _toppingSystem.Clear();
+                _toppingSystemRenderer.material = Topping.ToppingMaterial;
+                _toppingSystem.Emit(1);
+            }
 
         }
 
@@ -77,26 +98,29 @@ namespace ggj.rootbeer
             if (Syrup != null)
                 colors.Add(Syrup.Color);
 
-            switch(blendMode)
-            {
-                case 1:
-                    // simple subtractive?
-                    returnColor = colors.
-                        Aggregate((c1, c2) => new Color(c1.r * c2.r, c1.g * c2.g, c1.b * c2.g));
-                    break;
-                case 2:
-                    // dilute subtractive?
-                    returnColor.r = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.r, 2)).Average());
-                    returnColor.g = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.g, 2)).Average());
-                    returnColor.b = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.b, 2)).Average());
-                    break;
-                default:
-                    // basic average
-                    returnColor.r = colors.Select(sel => sel.r).Average();
-                    returnColor.g = colors.Select(sel => sel.g).Average();
-                    returnColor.b = colors.Select(sel => sel.b).Average();
-                    break;
+            if (colors.Count > 0) {
+
+                switch (blendMode) {
+                    case 1:
+                        // simple subtractive?
+                        returnColor = colors.
+                            Aggregate((c1, c2) => new Color(c1.r * c2.r, c1.g * c2.g, c1.b * c2.g));
+                        break;
+                    case 2:
+                        // dilute subtractive?
+                        returnColor.r = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.r, 2)).Average());
+                        returnColor.g = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.g, 2)).Average());
+                        returnColor.b = 1 - Mathf.Sqrt(colors.Select(sel => Mathf.Pow(1 - sel.b, 2)).Average());
+                        break;
+                    default:
+                        // basic average
+                        returnColor.r = colors.Select(sel => sel.r).Average();
+                        returnColor.g = colors.Select(sel => sel.g).Average();
+                        returnColor.b = colors.Select(sel => sel.b).Average();
+                        break;
+                }
             }
+
             return returnColor;
         }
 

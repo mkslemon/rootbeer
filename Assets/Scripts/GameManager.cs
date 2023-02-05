@@ -38,7 +38,7 @@ namespace ggj.rootbeer
 
         [SerializeField] private List<Ingredient> _ingredients;
         [SerializeField] List<Color> _ingredientColors;
-        [SerializeField] List<Sprite> _toppingSprites;
+        [SerializeField] List<Material> _toppingMaterials;
 
 
         private void Awake()
@@ -54,9 +54,9 @@ namespace ggj.rootbeer
             _ingredients[4]._syrup = new Syrup("Grenadine", _ingredientColors[4], "", new FlavorProfile(1f, 1f, 0f, 0f));
             _ingredients[5]._syrup = new Syrup("Coconut Creamer", _ingredientColors[5], "", new FlavorProfile(1f, 0f, 0f, 1f));
 
-            _ingredients[6]._topping = new Topping("Mint", _toppingSprites[0], "", new FlavorProfile(0f, .5f, .5f, .5f));
-            _ingredients[7]._topping = new Topping("Cherry", _toppingSprites[1], "", new FlavorProfile(.5f, .5f, .5f, 0f));
-            _ingredients[8]._topping = new Topping("Lime", _toppingSprites[2], "", new FlavorProfile(.5f, .5f, 0f, .5f));
+            _ingredients[6]._topping = new Topping("Mint", _toppingMaterials[0], "", new FlavorProfile(0f, .5f, .5f, .5f));
+            _ingredients[7]._topping = new Topping("Cherry", _toppingMaterials[1], "", new FlavorProfile(.5f, .5f, .5f, 0f));
+            _ingredients[8]._topping = new Topping("Lime", _toppingMaterials[2], "", new FlavorProfile(.5f, .5f, 0f, .5f));
         }
 
 
