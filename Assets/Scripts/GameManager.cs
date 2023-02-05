@@ -57,16 +57,6 @@ namespace ggj.rootbeer
 
         public void tryToServe()
         {
-            Debug.Log("Patron1 FP: " + activePatrons[0].FlavorProfile.ToString());
-            Debug.Log("Patron2 FP: " + activePatrons[1].FlavorProfile.ToString());
-            Debug.Log("Target FP: " + targetFlavorProfile.ToString());
-            Debug.Log("Drink FP: " + Drink.Instance.FlavorProfile.ToString());
-            Debug.Log("PatronSTartingDistance: " + PatronStartingDistanceToTarget);
-            float[] dist = activePatrons.Select(sel => sel.FlavorProfile.GetDistance(Drink.Instance.FlavorProfile)).ToArray();
-            foreach(var distance in dist)
-            {
-                Debug.Log("Dist: " + distance);
-            }
             //compare to preferences to generate a score (0 to 1.0)
             float[] scores = activePatrons.Select(sel => sel.Score(Drink.Instance)).ToArray();
             foreach (var score in scores)
