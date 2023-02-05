@@ -19,6 +19,10 @@ public class IntroMenu : MonoBehaviour
 
     public void LaunchGame()
     {
+        if (FMODUnity.RuntimeManager.HasBankLoaded("Master Bank"))
+        {
+            Debug.Log("Master Bank Loaded");
+        }
         SceneManager.LoadScene(1);
     }
 }
