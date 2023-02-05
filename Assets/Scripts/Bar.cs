@@ -19,9 +19,11 @@ namespace ggj.rootbeer
 
         private const float TOPPING_WEIGHT = 0.5f;
 
-
         private List<FlavorProfile> _currentFlavorProfiles;
         private List<FlavorProfile> _prevFlavorProfiles;
+
+        private Ingredient[] _ingredients = new Ingredient[3];
+        private Ingredient[] _prevIngredients;
 
         #region Unity
         private void Awake() {
@@ -33,8 +35,10 @@ namespace ggj.rootbeer
         #endregion
 
         #region     Public
-        public void SetJuice(Juice juice) {
+        public void SetJuice(Juice juice, Ingredient ingredient) {
             Drink.Instance.Juice = juice;
+            _prevIngredients = _ingredients;
+            _ingredients[0] = ingredient;
             Mix();
         }
 
@@ -43,8 +47,10 @@ namespace ggj.rootbeer
             Mix();
         }
 
-        public void SetSyrup(Syrup syrup) {
+        public void SetSyrup(Syrup syrup, Ingredient ingredient) {
             Drink.Instance.Syrup = syrup;
+            _prevIngredients = _ingredients;
+            _ingredients[1] = ingredient;
             Mix();
         }
 
@@ -53,8 +59,10 @@ namespace ggj.rootbeer
             Mix();
         }
 
-        public void SetTopping(Topping topping) {
+        public void SetTopping(Topping topping, Ingredient ingredient) {
             Drink.Instance.Topping = topping;
+            _prevIngredients = _ingredients;
+            _ingredients[1] = ingredient;
             Mix();
         }
 
@@ -96,6 +104,17 @@ namespace ggj.rootbeer
             _gameManager.NewDrink();
         }
 
+        public void CancelNewMix() {
+            _ingredients = _prevIngredients;
+            _currentFlavorProfiles = _prevFlavorProfiles;
+
+            foreach (Ingredient ingredient in _ingredients)
+                if (ingredient != null)
+                    ingredient.Select();
+
+            Mix(false);
+        }
+
         #endregion
 
         #region Private helpers
@@ -121,11 +140,6 @@ namespace ggj.rootbeer
                 }
                 
             }
-        }
-
-        private void CancelNewMix() {
-            _currentFlavorProfiles = _prevFlavorProfiles;
-            Mix(false);
         }
 
         #endregion
