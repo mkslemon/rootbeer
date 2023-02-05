@@ -99,7 +99,7 @@ namespace ggj.rootbeer
                 lastScoredirection = 1;
             }
             lastScore = 1- FlavorProfile.GetDistance(d.FlavorProfile);
-            lastScore = lastScore * lastScore;
+            lastScore = Mathf.Pow(lastScore, 1.1f);
             
             return lastScore;
         }
