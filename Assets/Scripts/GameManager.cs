@@ -43,6 +43,7 @@ namespace ggj.rootbeer
         [SerializeField] List<Color> _ingredientColors;
         [SerializeField] List<Material> _toppingMaterials;
 
+        FMODUnity.StudioEventEmitter emitter;
 
         private void Awake()
         {
@@ -73,6 +74,10 @@ namespace ggj.rootbeer
                 Debug.Log("Score: " + score);
             }
 
+            // FMOD Parameter Trigger is stored on the main camera
+            var mainCamera = GameObject.Find("Main Camera");
+            emitter = GameObject.Find("Main Camera").GetComponent<FMODUnity.StudioEventEmitter>();
+
             //do we need to reject a served drink because player forgot something in it?
 
             //process the submission
@@ -92,18 +97,21 @@ namespace ggj.rootbeer
                     //characters are close enough to win
                     //show emotion emoji
                     activePatrons[p].doublePopEmoji(activePatrons[p].hint, activePatrons[p].closeEmoji);
+                    emitter.SetParameter("Proximity", 2.0f);
                 }
                 else if (scores[p] >=  mediumZone)
                 {
                     //we made it to okay territory
                     //show emotion emoji and show hint emoji
                     activePatrons[p].doublePopEmoji(activePatrons[p].hint, activePatrons[p].mediumEmoji);
+                    emitter.SetParameter("Proximity", 1.0f);
                 }
                 else
                 {
                     //we're far away
                     //show emotion emoji and show hint emoji
                     activePatrons[p].doublePopEmoji(activePatrons[p].hint, activePatrons[p].mediumEmoji);
+                    emitter.SetParameter("Proximity", 0.0f);
                 }
 
 
@@ -169,17 +177,19 @@ namespace ggj.rootbeer
                         p.toBeReplaced = true;
                     }
                 }
+
+                emitter.SetParameter("Proximity", 0.0f);
                 
                 
-                if(Patrons.Length <= (currentLevel + 1 * 2))
+                if(Patrons.Length <= (currentLevel * 2))
                 {//the game is over
 
-                    //todo show fanfare
                     endOfGameGroup.DOFade(1f, 1f).SetDelay(2f);
                     for(int i = wins; i<heartsLeft.Length; i++)
                     {
                         heartsLeft[i].gameObject.SetActive(false);
                     }
+                    emitter.SetParameter("Result", 1);
                 }
             }
 
