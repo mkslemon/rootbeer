@@ -5870,8 +5870,7 @@ ParticleSystem:
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives:
-    - {fileID: 0}
+    primitives: []
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -19555,6 +19554,10 @@ PrefabInstance:
       propertyPath: _icePlaneTransform
       value: 
       objectReference: {fileID: 1683728739}
+    - target: {fileID: 8604814777002736070, guid: 10452b7e55c434d8eb1114c192d51513, type: 3}
+      propertyPath: _bubbleParticleSystem
+      value: 
+      objectReference: {fileID: 876511721}
     - target: {fileID: 8604814777002736070, guid: 10452b7e55c434d8eb1114c192d51513, type: 3}
       propertyPath: _toppingSystemRenderer
       value: 

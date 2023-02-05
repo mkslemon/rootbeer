@@ -24,6 +24,7 @@ namespace ggj.rootbeer
         [SerializeField] private Material _drinkMaterial;
         [SerializeField] private ParticleSystem _toppingSystem;
         [SerializeField] private ParticleSystemRenderer _toppingSystemRenderer;
+        [SerializeField] private ParticleSystem _bubbleParticleSystem;
         [SerializeField] private Transform _planeTransform;
         [SerializeField] private Transform _icePlaneTransform;
 
@@ -90,6 +91,11 @@ namespace ggj.rootbeer
                 _toppingSystem.Clear();
                 _toppingSystemRenderer.material = Topping.ToppingMaterial;
                 _toppingSystem.Emit(1);
+            }
+
+            if (Juice != null && Syrup != null  && Topping != null)
+            {
+                _bubbleParticleSystem.Emit(300);
             }
 
         }
