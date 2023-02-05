@@ -18,6 +18,9 @@ namespace ggj.rootbeer
         public Topping Topping;
 
         [SerializeField] GameObject _strawGO;
+        [SerializeField] private Material _drinkMaterial;
+
+        private float[] _fillPercs = { -100, -5, 0 };
 
         #region Unity
 
@@ -41,36 +44,15 @@ namespace ggj.rootbeer
         //}
 
         public void UpdateRender() {
-            if (Juice != null && Topping != null) {
-                int spriteIdx = 0;
-                if (Juice.Name.Equals("Root Beer"))
-                    spriteIdx += 0;
-                else if (Juice.Name.Equals("Ginger Ale"))
-                    spriteIdx += 3;
-                else if (Juice.Name.Equals("Sparkling OJ"))
-                    spriteIdx += 6;
+            Color liquidColor = GetColor();
+            if (Juice != null && Syrup != null)
+                _drinkMaterial.SetFloat("_FillPerc", _fillPercs[2]);
+            else if (Juice != null || Syrup != null)
+                _drinkMaterial.SetFloat("_FillPerc", _fillPercs[1]);
+            else
+                _drinkMaterial.SetFloat("_FillPerc", _fillPercs[0]);
+            _drinkMaterial.SetColor("_BaseColor", liquidColor);
 
-                if (Topping.Name.Equals("Mint"))
-                    spriteIdx += 0;
-                else if (Topping.Name.Equals("Cherry"))
-                    spriteIdx += 1;
-                else if (Topping.Name.Equals("Lime"))
-                    spriteIdx += 2;
-
-                GetComponent<SpriteRenderer>().sprite = _drinkSprites[spriteIdx];
-            }
-            else if (Juice != null) {
-                int spriteIdx = 0;
-                if (Juice.Name.Equals("Root Beer"))
-                    spriteIdx = 0;
-                else if (Juice.Name.Equals("Ginger Ale"))
-                    spriteIdx = 1;
-                else if (Juice.Name.Equals("Sparkling OJ"))
-                    spriteIdx = 2;
-
-
-                GetComponent<SpriteRenderer>().sprite = _baseSprites[spriteIdx];
-            }
         }
 
         public Color GetColor()
@@ -79,7 +61,13 @@ namespace ggj.rootbeer
             // some examples altered from here: https://stackoverflow.com/questions/1351442/is-there-an-algorithm-for-color-mixing-that-works-like-mixing-real-colors
             Color returnColor = Color.black;
             int blendMode = 0;
-            Color[] colors = new Color[] { Juice.Color, Syrup.Color };
+
+            List<Color> colors = new List<Color>();
+
+            if (Juice != null)
+                colors.Add(Juice.Color);
+            if (Syrup != null)
+                colors.Add(Syrup.Color);
 
             switch(blendMode)
             {

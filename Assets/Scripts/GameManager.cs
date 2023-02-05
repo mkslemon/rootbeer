@@ -37,6 +37,7 @@ namespace ggj.rootbeer
         int currentLevel=0;
 
         [SerializeField] private List<Ingredient> _ingredients;
+        [SerializeField] List<Color> _ingredientColors;
 
 
         private void Awake()
@@ -44,13 +45,13 @@ namespace ggj.rootbeer
             _GAMEMANAGER = this;
             activePatrons = new Patron[2];
 
-            _ingredients[0]._juice = new Juice("Root Beer", Color.red, "", new FlavorProfile(0f, 0f, 1f, 1f));
-            _ingredients[1]._juice = new Juice("Ginger Ale", Color.red, "", new FlavorProfile(0f, 1f, 0f, 1f));
-            _ingredients[2]._juice = new Juice("Sparkling OJ", Color.red, "", new FlavorProfile(1f, 0f, 1f, 0f));
+            _ingredients[0]._juice = new Juice("Root Beer", _ingredientColors[0], "", new FlavorProfile(0f, 0f, 1f, 1f));
+            _ingredients[1]._juice = new Juice("Ginger Ale", _ingredientColors[1], "", new FlavorProfile(0f, 1f, 0f, 1f));
+            _ingredients[2]._juice = new Juice("Sparkling OJ", _ingredientColors[2], "", new FlavorProfile(1f, 0f, 1f, 0f));
 
-            _ingredients[3]._syrup = new Syrup("Vanilla", Color.red, "", new FlavorProfile(0f, 1f, 1f, 0f));
-            _ingredients[4]._syrup = new Syrup("Grenadine", Color.red, "", new FlavorProfile(1f, 1f, 0f, 0f));
-            _ingredients[5]._syrup = new Syrup("Coconut Creamer", Color.red, "", new FlavorProfile(1f, 0f, 0f, 1f));
+            _ingredients[3]._syrup = new Syrup("Vanilla", _ingredientColors[3], "", new FlavorProfile(0f, 1f, 1f, 0f));
+            _ingredients[4]._syrup = new Syrup("Grenadine", _ingredientColors[4], "", new FlavorProfile(1f, 1f, 0f, 0f));
+            _ingredients[5]._syrup = new Syrup("Coconut Creamer", _ingredientColors[5], "", new FlavorProfile(1f, 0f, 0f, 1f));
 
             _ingredients[6]._topping = new Topping("Mint", "", new FlavorProfile(0f, .5f, .5f, .5f));
             _ingredients[7]._topping = new Topping("Cherry", "", new FlavorProfile(.5f, .5f, .5f, 0f));

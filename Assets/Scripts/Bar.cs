@@ -17,8 +17,6 @@ namespace ggj.rootbeer
         [SerializeField] FlavorTooltip _drinkFlavorTooltip;
         [SerializeField] GameObject _serverButtonGO;
 
-        private const float TOPPING_WEIGHT = .5f;
-
         private List<FlavorProfile> _currentFlavorProfiles = new List<FlavorProfile>();
         private List<FlavorProfile> _prevFlavorProfiles = new List<FlavorProfile>();
 
@@ -130,7 +128,7 @@ namespace ggj.rootbeer
                 if (_currentFlavorProfiles.Count > 0)
                 {
                     var currentAverage = FlavorProfile.GetAverages(_currentFlavorProfiles);
-                    var weightedProfile = currentAverage.GetAsArray().Zip(profile, (c, t) => t + (c - t) * TOPPING_WEIGHT).ToArray();
+                    var weightedProfile = currentAverage.GetAsArray().Zip(profile, (c, t) => t + (c - t)).ToArray();
 
                     _currentFlavorProfiles.Add(new FlavorProfile(weightedProfile));
                 }
