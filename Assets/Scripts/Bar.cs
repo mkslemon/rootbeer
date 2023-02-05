@@ -34,6 +34,7 @@ namespace ggj.rootbeer
 
         #region     Public
         public void SetJuice(Juice juice, Ingredient ingredient) {
+            Drink.Instance.SaveIngredients();
             Drink.Instance.Juice = juice;
             _prevIngredients = _ingredients;
             _ingredients[0] = ingredient;
@@ -46,6 +47,7 @@ namespace ggj.rootbeer
         }
 
         public void SetSyrup(Syrup syrup, Ingredient ingredient) {
+            Drink.Instance.SaveIngredients();
             Drink.Instance.Syrup = syrup;
             _prevIngredients = _ingredients;
             _ingredients[1] = ingredient;
@@ -58,6 +60,7 @@ namespace ggj.rootbeer
         }
 
         public void SetTopping(Topping topping, Ingredient ingredient) {
+            Drink.Instance.SaveIngredients();
             Drink.Instance.Topping = topping;
             _prevIngredients = _ingredients;
             _ingredients[1] = ingredient;
@@ -74,7 +77,9 @@ namespace ggj.rootbeer
             if (getProfiles)
                 GetFlavorProfiles();
 
-            if (_currentFlavorProfiles.Count == 1)
+            if (_currentFlavorProfiles.Count == 0)
+                Drink.Instance.FlavorProfile = new FlavorProfile(0f, 0f, 0f, 0f);
+            else if (_currentFlavorProfiles.Count == 1)
                 Drink.Instance.FlavorProfile = _currentFlavorProfiles[0];
             else {
                 Drink.Instance.FlavorProfile = FlavorProfile.GetAverages(_currentFlavorProfiles);
@@ -104,6 +109,7 @@ namespace ggj.rootbeer
         }
 
         public void CancelNewMix() {
+            Drink.Instance.RevertIngredients();
             _ingredients = _prevIngredients;
             _currentFlavorProfiles = _prevFlavorProfiles;
 

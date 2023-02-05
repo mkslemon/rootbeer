@@ -18,6 +18,8 @@ namespace ggj.rootbeer
         public Syrup Syrup;
         public Topping Topping;
 
+        private (Juice, Syrup, Topping) prevIngredients;
+
         [SerializeField] GameObject _strawGO;
         [SerializeField] private Material _drinkMaterial;
         [SerializeField] private ParticleSystem _toppingSystem;
@@ -59,17 +61,17 @@ namespace ggj.rootbeer
             if (Juice != null && Syrup != null) {
                 _drinkMaterial.DOFloat(_fillPercs[2], "_FillPerc", 1);
                 _planeTransform.localPosition = Vector3.up* 0.9f;
-                _icePlaneTransform.localPosition = Vector3.up;
+                //_icePlaneTransform.localPosition = Vector3.up;
             }
             else if (Juice != null || Syrup != null) {
                 _drinkMaterial.DOFloat(_fillPercs[1], "_FillPerc", 1);
                 _planeTransform.localPosition = Vector3.up * 0.45f;
-                _icePlaneTransform.localPosition = Vector3.up * 0.55f;
+                //_icePlaneTransform.localPosition = Vector3.up * 0.55f;
             }
             else {
                 _drinkMaterial.SetFloat("_FillPerc", _fillPercs[0]);
                 _planeTransform.localPosition = Vector3.zero;
-                _icePlaneTransform.localPosition = Vector3.zero;
+                //_icePlaneTransform.localPosition = Vector3.zero;
             }
 
             // Set the color by mixing the ingredients
@@ -78,10 +80,10 @@ namespace ggj.rootbeer
 
 
             // Add ice
-            if (Juice != null || Syrup != null) {
-                _iceSystem.Clear();
-                _iceSystem.Emit(3);
-            }
+            //if (Juice != null || Syrup != null) {
+            //    _iceSystem.Clear();
+            //    //_iceSystem.Emit(3);
+            //}
 
             // Set the topping material and emit a topping particle
             if (Topping != null) {
@@ -92,12 +94,23 @@ namespace ggj.rootbeer
 
         }
 
+        public void SaveIngredients() {
+            prevIngredients = (Juice, Syrup, Topping);
+        }
+
+        public void RevertIngredients() {
+            Juice = prevIngredients.Item1;
+            Syrup = prevIngredients.Item2;
+            Topping = prevIngredients.Item3;
+        }
+
         public void EmptyRender() {
             _drinkMaterial.DOKill();
             _drinkMaterial.DOFloat(_fillPercs[0], "_FillPerc", 5);
 
             _toppingSystem.Clear();
-            _iceSystem.Clear();
+            //_iceSystem.Clear();
+            prevIngredients = (null, null, null);
         }
 
         public Color GetColor()
