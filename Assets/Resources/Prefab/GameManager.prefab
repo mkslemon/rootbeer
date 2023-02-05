@@ -44,3 +44,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6ebb5c358bf487790ca8a682ca029a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberTries: 5
+  triesLeft: 0
+  requiredScoreDistanceForWinEnding: 0.3
+  requiredScoreDistanceForOkayEnding: 0.5
+  happyZone: 0.7
+  mediumZone: 0.4
+  activePatrons:
+  - {fileID: 0}
+  - {fileID: 0}
+  Patrons:
+  - {fileID: 4646893017187543251, guid: 1e0b9b4807b5a439e87cb83700e028eb, type: 3}
+  - {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
+  - {fileID: 4646893017187543251, guid: 1e0b9b4807b5a439e87cb83700e028eb, type: 3}
+  - {fileID: 4646893017187543251, guid: f6187b80f63594d09b6823dbe29620df, type: 3}
+  patronOrigins:
+  - {fileID: 0}
+  - {fileID: 0}
+  endTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  PatronStartingDistanceToTarget: 0
+  patronEntryAnimOrigin:
+  - {fileID: 0}
+  - {fileID: 0}
+  charactersGrouping: {fileID: 0}
+  emojiBubbles:
+  - {fileID: 0}
+  - {fileID: 0}
+  triesLeftText: {fileID: 0}
+  winBlurb: {fileID: 0}
+  _ingredients:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

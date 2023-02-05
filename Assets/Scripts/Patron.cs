@@ -25,14 +25,14 @@ namespace ggj.rootbeer
 
 
         [Header("Emojis")]
-        public Emojimotion firstImpression;
-        public Emojimotion closeEmoji;
-        public Emojimotion mediumEmoji;
-        public Emojimotion farEmoji;
-        public Emojimotion closestEnd;
-        public Emojimotion mediumEnd;
-        public Emojimotion farEnd;
-        public Emojimotion hint;
+        public Sprite firstImpression;
+        public Sprite closeEmoji;
+        public Sprite mediumEmoji;
+        public Sprite farEmoji;
+        public Sprite closestEnd;
+        public Sprite mediumEnd;
+        public Sprite farEnd;
+        public Sprite hint;
         
 
         float lastScore;
@@ -84,7 +84,7 @@ namespace ggj.rootbeer
 
         public float Score(Drink d)
         {
-            lastScore = FlavorProfile.GetDistance(d.FlavorProfile);
+            lastScore = 1- FlavorProfile.GetDistance(d.FlavorProfile);
             return lastScore;
         }
 
@@ -135,12 +135,12 @@ namespace ggj.rootbeer
             return sequence;
         }
 
-        public Sequence popEmoji(Emojimotion emote)
+        public Sequence popEmoji(Sprite emote)
         {
             return emojiBubble.popEmoji(emote);
         }
 
-        public Sequence doublePopEmoji(Emojimotion emote, Emojimotion emote2)
+        public Sequence doublePopEmoji(Sprite emote, Sprite emote2)
         {
             Sequence sq = DOTween.Sequence();
             sq.Append(emojiBubble.fadeEmoji());
@@ -164,7 +164,7 @@ namespace ggj.rootbeer
             return sq;
         }
 
-        public Sequence popAndHideEmoji(Emojimotion emotion)
+        public Sequence popAndHideEmoji(Sprite emotion)
         {
             Sequence sq = DOTween.Sequence();
             sq.Append(emojiBubble.fadeEmoji());

@@ -2012,6 +2012,10 @@ PrefabInstance:
       value: winBlurb
       objectReference: {fileID: 0}
     - target: {fileID: 3367515974015735586, guid: 45f138e6b332c44d1af3e2097ceb6d9f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 544150195, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+    - target: {fileID: 3367515974015735586, guid: 45f138e6b332c44d1af3e2097ceb6d9f, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}

@@ -15,8 +15,8 @@ namespace ggj.rootbeer
         [HideInInspector] public int triesLeft;
         public float requiredScoreDistanceForWinEnding = 0.3f;
         public float requiredScoreDistanceForOkayEnding = 0.6f;
-        public float happyZone = .7f;
-        public float mediumZone = .4f;
+        public float happyZone = .85f;
+        public float mediumZone = .7f;
 
         [Header("Game Object References")]
         [HideInInspector] public Patron[] activePatrons =  new Patron[2];

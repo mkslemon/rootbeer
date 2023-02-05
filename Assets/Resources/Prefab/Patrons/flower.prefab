@@ -397,14 +397,14 @@ MonoBehaviour:
   flavorFloral: 0.4
   flavorSweet: 0.8
   flavorExotic: 0
-  firstImpression: 0
-  closeEmoji: 0
-  mediumEmoji: 0
-  farEmoji: 0
-  closestEnd: 0
-  mediumEnd: 0
-  farEnd: 0
-  hint: 0
+  firstImpression: {fileID: -1910167470, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  closeEmoji: {fileID: 437942627, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  mediumEmoji: {fileID: 1083134145, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  farEmoji: {fileID: 844546069, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  closestEnd: {fileID: -931982882, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  mediumEnd: {fileID: -892303009, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  farEnd: {fileID: -150963211, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
+  hint: {fileID: 2025538043, guid: 1d9595c933375014b8b61882bf9fe667, type: 3}
 --- !u!212 &8422529710144003965
 SpriteRenderer:
   m_ObjectHideFlags: 0

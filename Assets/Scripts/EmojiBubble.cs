@@ -55,14 +55,14 @@ public class EmojiBubble : MonoBehaviour
 
     }
 
-    public Sequence popEmoji(Emojimotion emote)
+    public Sequence popEmoji(Sprite emote)
     {
         
         Sequence sq = DOTween.Sequence();
         
         sq.AppendCallback(() =>
         {
-            emoji.sprite = emojiIcons[(int)emote];
+            emoji.sprite = emote;
             emoji.color = new Color(emoji.color.r, emoji.color.g, emoji.color.b, 0);
         }
         );
@@ -85,7 +85,7 @@ public class EmojiBubble : MonoBehaviour
         return sq;
     }
 
-    public Sequence popEmojiThenReturnToSecondEmoji(Emojimotion emote, Emojimotion emote2)
+    public Sequence popEmojiThenReturnToSecondEmoji(Sprite emote, Sprite emote2)
     {
         Sequence sq = DOTween.Sequence();
         sq.Append(fadeEmoji());
