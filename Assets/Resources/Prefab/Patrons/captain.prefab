@@ -220,6 +220,7 @@ MonoBehaviour:
   speakingAnchor: {fileID: 8100334087803771311}
   altSpeakingAnchor: {fileID: 1136017748172920263}
   overlayLimbs: {fileID: 7039319103447286836}
+  breathingRect: {fileID: 6878827262966441408}
   emojiBubble: {fileID: 0}
   satisfied: 0
   toBeReplaced: 0

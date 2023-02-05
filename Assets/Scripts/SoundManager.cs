@@ -6,17 +6,15 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public AudioSource bgm;
-    public AudioSource bgm2;
-    public AudioSource ambiance;
     public AudioSource pickupIngredient;
     public AudioSource dropIngredient;
-    public AudioSource addIngredient;
-    public List<AudioSource> drinkingSound;
+    public AudioSource addBase;
+    public AudioSource addGarnish;
+    public AudioSource addMixin;
+    public AudioSource drinkingSound;
     public AudioSource strawsPopin;
-    public List<AudioSource> characterMoves;
-    public AudioSource characterMovesSlow;
-    public AudioSource characterMovesFast;
+    public AudioSource characterMovesIn;
+    public AudioSource characterMovesOut;
 
 
     public AudioSource pickRandom(List<AudioSource> audioSources)

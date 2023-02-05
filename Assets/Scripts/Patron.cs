@@ -12,6 +12,7 @@ namespace ggj.rootbeer
         public Transform speakingAnchor;
         public Transform altSpeakingAnchor;
         public SpriteRenderer overlayLimbs;
+        public Transform breathingRect;
         [HideInInspector]public EmojiBubble emojiBubble;
         [HideInInspector] public bool satisfied;
         [HideInInspector] public bool toBeReplaced;
@@ -35,6 +36,7 @@ namespace ggj.rootbeer
         
 
         float lastScore;
+        float lastScoredirection = 1;
 
         
         // Start is called before the first frame update
@@ -70,6 +72,7 @@ namespace ggj.rootbeer
         {
             emojiBubble= eb;
             eb.Reversed(false);
+            bobCharacter();
         }
 
         public void GeneratePreferences()
@@ -83,13 +86,40 @@ namespace ggj.rootbeer
 
         public float Score(Drink d)
         {
+            
+                float nu = 1 - FlavorProfile.GetDistance(d.FlavorProfile);
+            if (lastScore > nu)
+            {
+                lastScoredirection = -1;
+                
+            }
+            else
+            {
+                lastScoredirection = 1;
+            }
             lastScore = 1- FlavorProfile.GetDistance(d.FlavorProfile);
+            lastScore = lastScore * lastScore;
             return lastScore;
         }
 
-        public void Scooch(float score, Vector3 furthestPoint, Vector3 targetPoint)
+        public void Scooch(float score, Vector3 furthestPoint, Vector3 targetPoint, float delay)
         {
             Sequence sequence = DOTween.Sequence();
+            sequence.AppendInterval(delay);
+            sequence.AppendCallback(()=>
+            {
+                if(lastScoredirection > 0)
+                {
+                    SoundManager.instance.characterMovesIn.Play();
+                }
+                else
+                {
+                    SoundManager.instance.characterMovesOut.Play();
+                }
+                
+
+
+            });
             sequence.Append(transform.DOMove(Vector3.Lerp(furthestPoint, targetPoint, score), 2f).SetEase(Ease.OutSine));
             sequence.AppendInterval(1f);
             sequence.AppendCallback(
@@ -185,6 +215,16 @@ namespace ggj.rootbeer
             return sq;
         }
 
+        void bobCharacter()
+        {
+            Sequence sq = DOTween.Sequence();
+            sq.Append(breathingRect.transform.DORotate(new Vector3(0, 0, -3.0f), 0.01f));
+            sq.Append(breathingRect.transform.DORotate(new Vector3(0, 0, 3.0f), 4f));
+            sq.AppendInterval(.1f);
+            sq.Append(breathingRect.transform.DORotate(new Vector3(0, 0, -3.0f), 4f));
+            sq.AppendInterval(.1f);
+            sq.SetLoops(-1);
+        }
 
     }
 }

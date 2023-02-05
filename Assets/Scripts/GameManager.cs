@@ -81,7 +81,7 @@ namespace ggj.rootbeer
 
                 //move the patron closer to the drink if liked or closer to their origin point if disliked
                 //pass a float 0 to 1.0 along with 
-                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, endTargets[p].transform.position);
+                activePatrons[p].Scooch(scores[p], patronOrigins[p].transform.position, endTargets[p].transform.position, p*.1f);
                 //
                 if (scores[p] >= happyZone)
                 {
