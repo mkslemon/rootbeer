@@ -23,6 +23,7 @@ namespace ggj.rootbeer
         [SerializeField] private ParticleSystem _toppingSystem;
         [SerializeField] private ParticleSystemRenderer _toppingSystemRenderer;
         [SerializeField] private Transform _planeTransform;
+        [SerializeField] private Transform _icePlaneTransform;
 
         [SerializeField] private ParticleSystem _iceSystem;
 
@@ -58,14 +59,17 @@ namespace ggj.rootbeer
             if (Juice != null && Syrup != null) {
                 _drinkMaterial.DOFloat(_fillPercs[2], "_FillPerc", 1);
                 _planeTransform.localPosition = Vector3.up;
+                _icePlaneTransform.localPosition = Vector3.up;
             }
             else if (Juice != null || Syrup != null) {
                 _drinkMaterial.DOFloat(_fillPercs[1], "_FillPerc", 1);
                 _planeTransform.localPosition = Vector3.up * 0.55f;
+                _icePlaneTransform.localPosition = Vector3.up * 0.55f;
             }
             else {
                 _drinkMaterial.SetFloat("_FillPerc", _fillPercs[0]);
                 _planeTransform.localPosition = Vector3.zero;
+                _icePlaneTransform.localPosition = Vector3.zero;
             }
 
             // Set the color by mixing the ingredients

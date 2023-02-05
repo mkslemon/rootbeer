@@ -7693,7 +7693,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ccdf96ad1e1a4c628cf2993cfd15d49, type: 2}
+  - {fileID: 2100000, guid: ea78aaa4fd99342679e2c4ba343a0169, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19483,6 +19483,10 @@ PrefabInstance:
       propertyPath: _planeTransform
       value: 
       objectReference: {fileID: 603704548}
+    - target: {fileID: 8604814777002736070, guid: 10452b7e55c434d8eb1114c192d51513, type: 3}
+      propertyPath: _icePlaneTransform
+      value: 
+      objectReference: {fileID: 1683728739}
     - target: {fileID: 8604814777002736070, guid: 10452b7e55c434d8eb1114c192d51513, type: 3}
       propertyPath: _toppingSystemRenderer
       value: 
