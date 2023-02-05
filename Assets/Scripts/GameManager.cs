@@ -57,7 +57,6 @@ namespace ggj.rootbeer
 
         public void tryToServe()
         {
-            float[] scores = activePatrons.Select(sel => GetNormalizedDistance(sel, Drink.Instance.FlavorProfile) / PatronStartingDistanceToTarget).ToArray();
             Debug.Log("Patron1 FP: " + activePatrons[0].FlavorProfile.ToString());
             Debug.Log("Patron2 FP: " + activePatrons[1].FlavorProfile.ToString());
             Debug.Log("Target FP: " + targetFlavorProfile.ToString());
@@ -68,6 +67,7 @@ namespace ggj.rootbeer
             {
                 Debug.Log("Dist: " + distance);
             }
+            float[] scores = activePatrons.Select(sel => GetNormalizedDistance(sel, Drink.Instance.FlavorProfile)).ToArray();
             foreach (var score in scores)
             {
                 Debug.Log("Score: " + score);
@@ -262,6 +262,7 @@ namespace ggj.rootbeer
 
         public void NewDrink() {
             UpdateTargetFlavorProfile();
+            GetStartingDistance(targetFlavorProfile);
             tryToServe();
         }
 
