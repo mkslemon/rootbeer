@@ -95,6 +95,7 @@ namespace ggj.rootbeer
 
             if (Juice != null && Syrup != null  && Topping != null)
             {
+                SoundManager.instance.addMixin.Play();
                 _bubbleParticleSystem.Emit(300);
             }
 
